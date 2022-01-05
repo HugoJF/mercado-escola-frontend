@@ -13,6 +13,7 @@ import {ListItem} from "../components/list-item";
 import {Breadcrumb} from "../components/breadcrumb";
 import {LinkGroup} from "../components/link-group";
 import {LinkGroupItem} from "../components/link-group-item";
+import {Badge} from "../components/badge";
 
 const Home: NextPage = () => {
     return <>
@@ -39,6 +40,13 @@ const Home: NextPage = () => {
                 <Button>Entrar</Button>
                 <Button color="primary">Entrar</Button>
                 <Button color="danger">Entrar</Button>
+            </div>
+
+            <div className="flex items-center space-x-4">
+                <Badge>Green</Badge>
+                <Badge color="red">Red</Badge>
+                <Badge color="orange">Orange</Badge>
+                <Badge color="blue">Blue</Badge>
             </div>
 
             <div className="space-x-4">
