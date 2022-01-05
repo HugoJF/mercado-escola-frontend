@@ -17,56 +17,45 @@ const IconContainer: NextPage<IconContainerProps> = ({display, children}) => (
     </div>
 );
 
-const desktopMenu: { icon: Icon, href: string, display: 'mobile' | 'desktop' }[] = [
-    {
-        icon: Heart,
-        href: '/', // TODO,
-        display: 'desktop',
-    },
-    {
-        icon: ShoppingCart,
-        href: '/about', // TODO
-        display: 'desktop',
-    },
-    {
-        icon: Settings,
-        href: '/contact', // TODO
-        display: 'desktop',
-    },
-    {
-        icon: Search,
-        href: '/contact', // TODO
-        display: 'mobile',
-    },
-];
+const desktopMenu: { icon: Icon, href: string, display: 'mobile' | 'desktop' }[] = [{
+    icon: Heart,
+    href: '/', // TODO,
+    display: 'desktop',
+}, {
+    icon: ShoppingCart,
+    href: '/about', // TODO
+    display: 'desktop',
+}, {
+    icon: Settings,
+    href: '/contact', // TODO
+    display: 'desktop',
+}, {
+    icon: Search,
+    href: '/contact', // TODO
+    display: 'mobile',
+}];
 
-const mobileMenu: { icon: Icon, label: string, href: string }[] = [
-    {
-        icon: Home,
-        href: '/', // TODO,
-        label: 'Início',
-    },
-    {
-        icon: Heart,
-        href: '/', // TODO,
-        label: 'Favoritos',
-    },
-    {
-        icon: ShoppingCart,
-        href: '/about', // TODO
-        label: 'Pedidos',
-    },
-    {
-        icon: Settings,
-        href: '/contact', // TODO
-        label: 'Administrativo',
-    },
-    {
-        icon: User,
-        href: '/contact', // TODO
-        label: 'Minha conta',
-    },
-];
+const mobileMenu: { icon: Icon, label: string, href: string }[] = [{
+    icon: Home,
+    href: '/', // TODO,
+    label: 'Início',
+}, {
+    icon: Heart,
+    href: '/', // TODO,
+    label: 'Favoritos',
+}, {
+    icon: ShoppingCart,
+    href: '/about', // TODO
+    label: 'Pedidos',
+}, {
+    icon: Settings,
+    href: '/contact', // TODO
+    label: 'Administrativo',
+}, {
+    icon: User,
+    href: '/contact', // TODO
+    label: 'Minha conta',
+}];
 
 export const Header: NextPage = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -83,7 +72,7 @@ export const Header: NextPage = () => {
                 {!menuOpen && <Menu className="flex-shrink-0" onClick={toggleMenu}/>}
                 {menuOpen && <X className="flex-shrink-0" onClick={toggleMenu}/>}
             </IconContainer>
-            <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-100 tracking-tighter cursor-pointer">
+            <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-100 tracking-tighter cursor-pointer whitespace-nowrap">
                 Mercado Escola
             </h3>
             <div className="hidden md:flex items-stretch flex-grow py-3 px-6">
@@ -103,7 +92,7 @@ export const Header: NextPage = () => {
                 <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-100 cursor-pointer">
                     <User className="flex-shrink-0"/>
                     {/* TODO nome do usuario */}
-                    <span className="hidden md:inline">
+                    <span className="hidden md:inline whitespace-nowrap">
                         Rafael Fulano
                     </span>
                 </div>
@@ -120,5 +109,13 @@ export const Header: NextPage = () => {
                 <span className="ml-4">{label}</span>
             </div>)}
         </div>}
+        {/* TODO toggle this bar */}
+        <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
+            <ShoppingCart/>
+            {/* TODO link */}
+            <a className="flex-grow text-center" href="#">Ver carrinho</a>
+            {/* TODO price */}
+            <span>R$ 3,00</span>
+        </div>
     </header>;
 };
