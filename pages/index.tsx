@@ -4,13 +4,15 @@ import {Title} from "../components/title";
 import {SectionTitle} from "../components/section-title";
 import {Button} from "../components/button";
 import {Select} from "../components/select";
-import {Mail, Trash} from "react-feather";
+import {Mail, ShoppingBag, ShoppingCart, Trash, User, Users} from "react-feather";
 import {IconButton} from "../components/icon-button";
 import {ToggleGroup} from "../components/toggle-group";
 import {Toggle} from "../components/toggle";
 import {Header} from "../components/header";
 import {ListItem} from "../components/list-item";
 import {Breadcrumb} from "../components/breadcrumb";
+import {LinkGroup} from "../components/link-group";
+import {LinkGroupItem} from "../components/link-group-item";
 
 const Home: NextPage = () => {
     return <>
@@ -76,6 +78,24 @@ const Home: NextPage = () => {
                     <Toggle id="pog2" name="pog">Automatico</Toggle>
                     <Toggle id="pog3" name="pog">Por peso</Toggle>
                 </ToggleGroup>
+            </div>
+            <div className="grid grid-cols-4 gap-4">
+                <LinkGroup title="Produtos" icon={ShoppingBag}>
+                    <LinkGroupItem>Adicionar novo produto</LinkGroupItem>
+                    <LinkGroupItem>Ver todos os produtos</LinkGroupItem>
+                </LinkGroup>
+                <LinkGroup title="Produtores" icon={Users}>
+                    <LinkGroupItem>Registrar novo produtor</LinkGroupItem>
+                    <LinkGroupItem>Ver todos os produtores</LinkGroupItem>
+                </LinkGroup>
+                <LinkGroup title="Aberturas" icon={ShoppingCart}>
+                    <LinkGroupItem>Adicionar nova abertura</LinkGroupItem>
+                    <LinkGroupItem>Ver aberturas pendentes</LinkGroupItem>
+                    <LinkGroupItem>Ver todas as aberturas</LinkGroupItem>
+                </LinkGroup>
+                <LinkGroup title="Usuários" icon={User}>
+                    <LinkGroupItem>Ver todos os usuários</LinkGroupItem>
+                </LinkGroup>
             </div>
             <div>
                 {Object.keys(Array(10).fill(0)).map(i => <ListItem
