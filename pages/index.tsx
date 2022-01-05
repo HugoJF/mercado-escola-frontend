@@ -69,13 +69,11 @@ const Home: NextPage = () => {
                 <IconButton color="danger" icon={Trash}/>
             </div>
             <div className="space-x-4">
-                <form action="">
-                    <ToggleGroup>
-                        <Toggle id="pog1" name="pog" value="1" checked>Por unidade</Toggle>
-                        <Toggle id="pog2" name="pog" value="2">Automatico</Toggle>
-                        <Toggle id="pog3" name="pog" value="3">Por peso</Toggle>
-                    </ToggleGroup>
-                </form>
+                <ToggleGroup>
+                    <Toggle id="pog1" name="pog">Por unidade</Toggle>
+                    <Toggle id="pog2" name="pog">Automatico</Toggle>
+                    <Toggle id="pog3" name="pog">Por peso</Toggle>
+                </ToggleGroup>
             </div>
             <div>
                 {Object.keys(Array(10).fill(0)).map(i => <ListItem
