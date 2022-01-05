@@ -14,6 +14,7 @@ import {Breadcrumb} from "../components/breadcrumb";
 import {LinkGroup} from "../components/link-group";
 import {LinkGroupItem} from "../components/link-group-item";
 import {Badge} from "../components/badge";
+import {Pagination} from "../components/pagination";
 
 const Home: NextPage = () => {
     return <>
@@ -48,6 +49,8 @@ const Home: NextPage = () => {
                 <Badge color="orange">Orange</Badge>
                 <Badge color="blue">Blue</Badge>
             </div>
+
+            <Pagination/>
 
             <div className="space-x-4">
                 <Select icon={Mail}>
