@@ -8,10 +8,12 @@ import {Mail, Trash} from "react-feather";
 import {IconButton} from "../components/icon-button";
 import {ToggleGroup} from "../components/toggle-group";
 import {Toggle} from "../components/toggle";
+import {Header} from "../components/header";
 
 const Home: NextPage = () => {
     return (
         <div className="container mx-auto space-y-4">
+            <Header/>
             <Title description="Introduction to NextJS">
                 Hello Next.js
             </Title>
