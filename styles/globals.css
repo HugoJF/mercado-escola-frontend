@@ -4,5 +4,9 @@
 body {
     @apply text-gray-900 bg-gray-100;
 }
+
+svg {
+    @apply flex-shrink-0;
+}
 @tailwind components;
 @tailwind utilities;

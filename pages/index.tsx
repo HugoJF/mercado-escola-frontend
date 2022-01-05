@@ -10,11 +10,13 @@ import {ToggleGroup} from "../components/toggle-group";
 import {Toggle} from "../components/toggle";
 import {Header} from "../components/header";
 import {ListItem} from "../components/list-item";
+import {Breadcrumb} from "../components/breadcrumb";
 
 const Home: NextPage = () => {
-    return (
+    return <>
+        <Header/>
+        <Breadcrumb/>
         <div className="container mx-auto space-y-4">
-            <Header/>
             <Title description="Introduction to NextJS">
                 Hello Next.js
             </Title>
@@ -83,7 +85,8 @@ const Home: NextPage = () => {
                 />)}
             </div>
         </div>
-    )
+
+    </>
 }
 
 export default Home

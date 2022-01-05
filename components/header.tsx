@@ -5,9 +5,11 @@ import clsx from "clsx";
 
 type IconContainerProps = {
     display: 'mobile' | 'desktop';
+    onClick?: () => void;
 }
-const IconContainer: NextPage<IconContainerProps> = ({display, children}) => (
+const IconContainer: NextPage<IconContainerProps> = ({display, children, onClick}) => (
     <div
+        onClick={onClick}
         className={clsx('duration-150 flex items-center px-6 hover:bg-gray-100 cursor-pointer', {
             'hidden md:flex': display === 'desktop',
             'flex md:hidden': display === 'mobile',
@@ -65,12 +67,12 @@ export const Header: NextPage = () => {
     }
 
     return <header
-        className="fixed top-0 inset-x-0 bg-white z-10"
+        className="sticky top-0 inset-x-0 bg-white z-10"
     >
         <div className="flex justify-between md:justify-between h-20 items-stretch border-b border-gray-300">
-            <IconContainer display="mobile">
-                {!menuOpen && <Menu className="flex-shrink-0" onClick={toggleMenu}/>}
-                {menuOpen && <X className="flex-shrink-0" onClick={toggleMenu}/>}
+            <IconContainer display="mobile" onClick={toggleMenu}>
+                {!menuOpen && <Menu />}
+                {menuOpen && <X />}
             </IconContainer>
             <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-100 tracking-tighter cursor-pointer whitespace-nowrap">
                 Mercado Escola
@@ -85,12 +87,12 @@ export const Header: NextPage = () => {
                 {/* TODO missing href */}
                 {desktopMenu.map(({icon: Icon, href, display}) => (
                     <IconContainer display={display}>
-                        <Icon className="flex-shrink-0"/>
+                        <Icon/>
                     </IconContainer>
                 ))}
 
                 <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-100 cursor-pointer">
-                    <User className="flex-shrink-0"/>
+                    <User/>
                     {/* TODO nome do usuario */}
                     <span className="hidden md:inline whitespace-nowrap">
                         Rafael Fulano
@@ -105,17 +107,17 @@ export const Header: NextPage = () => {
             {mobileMenu.map(({label, icon: Icon}) => <div
                 className="flex items-center px-5 py-4 hover:bg-gray-100 cursor-pointer"
             >
-                <Icon className="flex-shrink-0 text-gray-500"/>
+                <Icon className="text-gray-500"/>
                 <span className="ml-4">{label}</span>
             </div>)}
         </div>}
         {/* TODO toggle this bar */}
-        <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
+        {!menuOpen && <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
             <ShoppingCart/>
             {/* TODO link */}
             <a className="flex-grow text-center" href="#">Ver carrinho</a>
             {/* TODO price */}
             <span>R$ 3,00</span>
-        </div>
+        </div>}
     </header>;
 };
