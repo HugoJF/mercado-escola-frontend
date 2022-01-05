@@ -9,6 +9,7 @@ import {IconButton} from "../components/icon-button";
 import {ToggleGroup} from "../components/toggle-group";
 import {Toggle} from "../components/toggle";
 import {Header} from "../components/header";
+import {ListItem} from "../components/list-item";
 
 const Home: NextPage = () => {
     return (
@@ -24,6 +25,11 @@ const Home: NextPage = () => {
                    value="notemail"/>
             <Input name="email" placeholder="Email para contato" type="email" id="pog"/>
             <Input name="email" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
+
+            <div className="grid grid-cols-2 gap-4">
+                <Input name="email" placeholder="Email para contato" type="email" id="pog"/>
+                <Input name="email" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
+            </div>
 
             <div className="space-x-4">
                 <Button>Entrar</Button>
@@ -70,6 +76,13 @@ const Home: NextPage = () => {
                         <Toggle id="pog3" name="pog" value="3">Por peso</Toggle>
                     </ToggleGroup>
                 </form>
+            </div>
+            <div>
+                {Object.keys(Array(10).fill(0)).map(i => <ListItem
+                    title="Abobrinha"
+                    description={(+i % 2) === 0 ? undefined : 'Abobrinha é uma fruta muito boa'}
+                    rightIcon={null}
+                />)}
             </div>
         </div>
     )
