@@ -10,7 +10,7 @@ const breadcrumb = [{
 }];
 
 export const Breadcrumb: NextPage = () => {
-    return <div className="flex items-center py-3 px-6 text-gray-400 text-sm border-gray-300 border-b">
+    return <div className="flex items-center space-x-2 py-3 px-6 text-gray-400 text-sm border-gray-300 border-b">
         <a>Início</a>
 
         {breadcrumb.map(crumb => <>

@@ -17,7 +17,7 @@ type ExtraProps = {
 }
 
 export const Badge: NextPage<NativeProps & ExtraProps> = ({color = 'green', children}) => {
-    return <span className={clsx('text-sm font-medium border-2 py-1 px-[10px] rounded-full', classMap[color])}>
+    return <span className={clsx('text-sm font-medium border-2 py-1 px-3 rounded-full', classMap[color])}>
         {children}
     </span>;
 };

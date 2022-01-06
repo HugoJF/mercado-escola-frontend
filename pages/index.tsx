@@ -15,12 +15,18 @@ import {LinkGroup} from "../components/link-group";
 import {LinkGroupItem} from "../components/link-group-item";
 import {Badge} from "../components/badge";
 import {Pagination} from "../components/pagination";
+import {Table} from "../components/table/table";
+import {Td} from "../components/table/td";
+import {Tbody} from "../components/table/tbody";
+import {Thead} from "../components/table/thead";
+import {TheadTd} from "../components/table/thead-td";
+import {Tr} from "../components/table/tr";
 
 const Home: NextPage = () => {
     return <>
         <Header/>
         <Breadcrumb/>
-        <div className="container mx-auto space-y-4">
+        <div className="container mx-auto space-y-4 pt-6 pb-32 px-6">
             <Title description="Introduction to NextJS">
                 Hello Next.js
             </Title>
@@ -36,6 +42,35 @@ const Home: NextPage = () => {
                 <Input name="email" placeholder="Email para contato" type="email" id="pog"/>
                 <Input name="email" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
             </div>
+
+            <Table>
+                <Thead>
+                    <Tr>
+                        <TheadTd>NOME</TheadTd>
+                        <TheadTd>SITUAÇÃO</TheadTd>
+                        <TheadTd>CARGO</TheadTd>
+                    </Tr>
+                </Thead>
+                <Tbody>
+                    {[1, 2, 3, 4, 5].map(() => (
+                        <Tr>
+                            <Td>
+                                <h5>Rafael Fulano</h5>
+                                <span className="block text-gray-700 text-sm mono">rafael.fulano@gmail.com</span>
+                            </Td>
+                            <Td>
+                                <Badge>Verificado</Badge>
+                            </Td>
+                            <Td>
+                                <Select>
+                                    <option value="administrator">Administrador</option>
+                                    <option value="user">Usuário</option>
+                                </Select>
+                            </Td>
+                        </Tr>
+                    ))}
+                </Tbody>
+            </Table>
 
             <div className="space-x-4">
                 <Button>Entrar</Button>
@@ -108,11 +143,11 @@ const Home: NextPage = () => {
                     <LinkGroupItem>Ver todos os usuários</LinkGroupItem>
                 </LinkGroup>
             </div>
-            <div>
+            <div className="divide-y border border-gray-300 bg-white rounded">
                 {Object.keys(Array(10).fill(0)).map(i => <ListItem
                     title="Abobrinha"
                     description={(+i % 2) === 0 ? undefined : 'Abobrinha é uma fruta muito boa'}
-                    rightIcon={null}
+                    rightIcon={(+i % 2) === 0 ? undefined : null}
                 />)}
             </div>
         </div>
