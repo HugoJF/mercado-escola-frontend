@@ -21,15 +21,46 @@ import {Tbody} from "../components/table/tbody";
 import {Thead} from "../components/table/thead";
 import {TheadTd} from "../components/table/thead-td";
 import {Tr} from "../components/table/tr";
+import clsx from "clsx";
+import {useState} from "react";
+import {Portal} from "../components/portal";
 
 const Home: NextPage = () => {
+    const [show, setShow] = useState(false);
+
     return <>
         <Header/>
         <Breadcrumb/>
+        <div
+            onClick={() => setShow(false)}
+            className={clsx('fixed inset-x-0 inset-y-0 bg-black ', {
+                'z-40 opacity-25': show,
+                '-z-10 opacity-0': !show,
+            })}
+        />
+
+        <Portal>
+            <div className={clsx('duration-150 fixed inset-x-0 bottom-0 bg-gray-100 border-t border-gray-300 z-50', {
+                'translate-y-0': show,
+                'translate-y-full': !show,
+            })}>
+                <p className="p-6 text-center">
+                    Deseja remover <strong>Abobrinha Paulista picado pequeno</strong> do carrinho?
+                </p>
+                <hr/>
+                <div className="p-6 grid grid-cols-2 gap-4">
+                    <Button>Cancelar</Button>
+                    <Button color="danger">Remover do carrinho</Button>
+                </div>
+            </div>
+        </Portal>
+
         <div className="container mx-auto space-y-4 pt-6 pb-32 px-6">
             <Title description="Introduction to NextJS">
                 Hello Next.js
             </Title>
+
+            <Button onClick={() => setShow(!show)}>{['Abrir', 'Fechar'][+show]}</Button>
 
             <SectionTitle>Another part of this</SectionTitle>
 
