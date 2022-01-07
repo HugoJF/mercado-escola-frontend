@@ -21,57 +21,78 @@ import {Tbody} from "../components/table/tbody";
 import {Thead} from "../components/table/thead";
 import {TheadTd} from "../components/table/thead-td";
 import {Tr} from "../components/table/tr";
-import clsx from "clsx";
 import {useState} from "react";
-import {Portal} from "../components/portal";
+import {SimpleModal} from "../components/modals/simple-modal";
 
 const Home: NextPage = () => {
-    const [show, setShow] = useState(false);
+    const [simpleModal, setSimpleModal] = useState(false);
+    const [toggleModal, setToggleModal] = useState(false);
 
     return <>
         <Header/>
         <Breadcrumb/>
-        <div
-            onClick={() => setShow(false)}
-            className={clsx('fixed inset-x-0 inset-y-0 bg-black ', {
-                'z-40 opacity-25': show,
-                '-z-10 opacity-0': !show,
-            })}
-        />
-
-        <Portal>
-            <div className={clsx('duration-150 fixed inset-x-0 bottom-0 bg-gray-100 border-t border-gray-300 z-50', {
-                'translate-y-0': show,
-                'translate-y-full': !show,
-            })}>
-                <p className="p-6 text-center">
-                    Deseja remover <strong>Abobrinha Paulista picado pequeno</strong> do carrinho?
-                </p>
-                <hr/>
-                <div className="p-6 grid grid-cols-2 gap-4">
-                    <Button>Cancelar</Button>
-                    <Button color="danger">Remover do carrinho</Button>
-                </div>
-            </div>
-        </Portal>
 
         <div className="container mx-auto space-y-4 pt-6 pb-32 px-6">
             <Title description="Introduction to NextJS">
                 Hello Next.js
             </Title>
 
-            <Button onClick={() => setShow(!show)}>{['Abrir', 'Fechar'][+show]}</Button>
+            <div className="flex space-x-4">
+                <Button
+                    onClick={() => setSimpleModal(!simpleModal)}>
+                    {['Abrir modal simple', 'Fechar'][+simpleModal]}
+                </Button>
+                <Button
+                    onClick={() => setToggleModal(!toggleModal)}>
+                    {['Abrir toggle modal', 'Fechar'][+toggleModal]}
+                </Button>
+            </div>
+
+            <SimpleModal
+                title={<>Deseja remover <strong>Abobrinha Paulista picado pequeno</strong> do carrinho?</>}
+                open={simpleModal}
+                onClose={() => setSimpleModal(false)}
+            >
+                <div className="p-6 grid grid-cols-2 gap-4">
+                    <Button
+                        onClick={() => setSimpleModal(false)}
+                    >
+                        Cancelar
+                    </Button>
+                    <Button
+                        color="danger"
+                        onClick={() => setSimpleModal(false)}
+                    >
+                        Remover do carrinho
+                    </Button>
+                </div>
+            </SimpleModal>
+
+            <SimpleModal
+                title={<>Deseja remover <strong>Abobrinha Paulista picado pequeno</strong> do carrinho?</>}
+                description={<>O pedido pode ser entregue ou retirado na feira</>}
+                open={toggleModal}
+                onClose={() => setToggleModal(false)}
+            >
+                <div className="p-6 grid grid-cols-1 gap-4">
+                    <ToggleGroup>
+                        <Toggle name="type" id="takeout">Entregar no endereço</Toggle>
+                        <Toggle name="type" id="delivery">Retirar pessoalmente</Toggle>
+                    </ToggleGroup>
+                    <Button onClick={() => setToggleModal(false)} color="primary">Atualizar</Button>
+                </div>
+            </SimpleModal>
 
             <SectionTitle>Another part of this</SectionTitle>
 
-            <Input name="email" placeholder="Email para contato" type="email" id="pog" error="Invalid email"
+            <Input name="email1" placeholder="Email para contato" type="email" id="pog" error="Invalid email"
                    value="notemail"/>
-            <Input name="email" placeholder="Email para contato" type="email" id="pog"/>
-            <Input name="email" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
+            <Input name="email2" placeholder="Email para contato" type="email" id="pog"/>
+            <Input name="email3" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
 
             <div className="grid grid-cols-2 gap-4">
-                <Input name="email" placeholder="Email para contato" type="email" id="pog"/>
-                <Input name="email" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
+                <Input name="email4" placeholder="Email para contato" type="email" id="pog"/>
+                <Input name="email5" placeholder="Email para contato" type="email" id="pog" value="asd@asd.com"/>
             </div>
 
             <Table>
