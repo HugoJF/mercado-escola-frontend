@@ -23,6 +23,8 @@ import {TheadTd} from "../components/table/thead-td";
 import {Tr} from "../components/table/tr";
 import {useState} from "react";
 import {SimpleModal} from "../components/modals/simple-modal";
+import {ProductCard} from "../components/product-card";
+import {ProductToggle} from "../components/product-toggle";
 
 const Home: NextPage = () => {
     const [simpleModal, setSimpleModal] = useState(false);
@@ -82,6 +84,14 @@ const Home: NextPage = () => {
                     <Button onClick={() => setToggleModal(false)} color="primary">Atualizar</Button>
                 </div>
             </SimpleModal>
+
+            <div className="grid grid-cols-4 gap-4">
+                {[1, 2, 3, 4].map(() => <ProductCard/>)}
+            </div>
+
+            <div className="grid grid-cols-4 gap-4">
+                {[1, 2, 3, 4].map(i => <ProductToggle id={i + ''}/>)}
+            </div>
 
             <SectionTitle>Another part of this</SectionTitle>
 
