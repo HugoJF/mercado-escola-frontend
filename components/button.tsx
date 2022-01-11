@@ -15,9 +15,9 @@ const classMap: { [key in ButtonColor]: string } = {
     danger: 'text-white bg-red-600 hover:bg-red-700',
 }
 
-export const Button: NextPage<NativeProps & ExtraProps> = ({color = 'default', children, ...rest}) => {
+export const Button: NextPage<NativeProps & ExtraProps> = ({color = 'default', className, children, ...rest}) => {
     return <button
-        className={clsx('duration-150 px-12 py-4 rounded', classMap[color])}
+        className={clsx('duration-150 px-12 py-4 rounded', classMap[color], className)}
         {...rest}
     >
         {children}

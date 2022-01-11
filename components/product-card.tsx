@@ -1,16 +1,27 @@
 import {NextPage} from "next";
 import {PlusCircle} from "react-feather";
+import {PriceFormatter} from "./ui/price-formatter";
 
-export const ProductCard: NextPage = () => (
+type Props = {
+    name: string;
+    price: number;
+    unit?: string;
+}
+
+export const ProductCard: NextPage<Props> = ({name, price, unit = 'unidade'}) => (
     <div className="p-6 bg-white border border-gray-300 rounded">
         {/* TODO image */}
         <div className="bg-gray-200 h-32 rounded"/>
         {/* TODO product information */}
         <div className="space-y-2 mt-6">
-            <h2>Alface americana</h2>
+            <h2>{name}</h2>
             <p>
-                <span className="text-orange-500">R$ 5,00</span>
-                <span className="text-sm text-gray-700">/pacote</span>
+                <span className="text-orange-500">
+                    <PriceFormatter price={price}/>
+                </span>
+                <span className="text-sm text-gray-700">
+                    /{unit}
+                </span>
             </p>
         </div>
         {/* TODO cart logic */}

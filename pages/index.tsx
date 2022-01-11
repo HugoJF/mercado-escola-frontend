@@ -1,34 +1,35 @@
 import type {NextPage} from 'next'
-import {Input} from "../components/input";
 import {Title} from "../components/title";
-import {SectionTitle} from "../components/section-title";
 import {Button} from "../components/button";
-import {Select} from "../components/select";
-import {Mail, ShoppingBag, ShoppingCart, Trash, User, Users} from "react-feather";
+import {Mail, Minus, Plus, ShoppingBag, ShoppingCart, Trash, User, Users} from "react-feather";
 import {IconButton} from "../components/icon-button";
 import {ToggleGroup} from "../components/toggle-group";
 import {Toggle} from "../components/toggle";
 import {Header} from "../components/header";
-import {ListItem} from "../components/list-item";
 import {Breadcrumb} from "../components/breadcrumb";
-import {LinkGroup} from "../components/link-group";
-import {LinkGroupItem} from "../components/link-group-item";
-import {Badge} from "../components/badge";
-import {Pagination} from "../components/pagination";
-import {Table} from "../components/table/table";
-import {Td} from "../components/table/td";
-import {Tbody} from "../components/table/tbody";
-import {Thead} from "../components/table/thead";
-import {TheadTd} from "../components/table/thead-td";
-import {Tr} from "../components/table/tr";
 import {useState} from "react";
 import {SimpleModal} from "../components/modals/simple-modal";
 import {ProductCard} from "../components/product-card";
 import {ProductToggle} from "../components/product-toggle";
+import {SectionTitle} from "../components/section-title";
+import {Table} from "../components/table/table";
+import {Thead} from "../components/table/thead";
+import {TheadTd} from "../components/table/thead-td";
+import {LinkGroup} from "../components/link-group";
+import {Badge} from "../components/badge";
+import {Td} from "../components/table/td";
+import {Pagination} from "../components/pagination";
+import {Select} from "../components/select";
+import {LinkGroupItem} from "../components/link-group-item";
+import {Tbody} from "../components/table/tbody";
+import {ListItem} from "../components/list-item";
+import {Tr} from "../components/table/tr";
+import {Input} from "../components/input";
 
 const Home: NextPage = () => {
     const [simpleModal, setSimpleModal] = useState(false);
     const [toggleModal, setToggleModal] = useState(false);
+    const [productModal, setProductModal] = useState(false);
 
     return <>
         <Header/>
@@ -47,6 +48,10 @@ const Home: NextPage = () => {
                 <Button
                     onClick={() => setToggleModal(!toggleModal)}>
                     {['Abrir toggle modal', 'Fechar'][+toggleModal]}
+                </Button>
+                <Button
+                    onClick={() => setProductModal(!productModal)}>
+                    {['Abrir product modal', 'Fechar'][+productModal]}
                 </Button>
             </div>
 
@@ -85,12 +90,43 @@ const Home: NextPage = () => {
                 </div>
             </SimpleModal>
 
+            <SimpleModal
+                title={<>Adicionando <strong>Abobrinha Paulista picado pequeno</strong> ao carrinho</>}
+                open={productModal}
+                onClose={() => setProductModal(false)}
+            >
+                <div className="p-6 grid grid-cols-1 gap-4">
+                    <div className="flex gap-4 justify-between">
+                        <span>R$ 5,00</span>
+                        <span>1 pacote</span>
+                    </div>
+                    <div className="flex gap-4">
+                        <IconButton icon={Minus}/>
+                        <IconButton icon={Plus}/>
+                        <Button
+                            onClick={() => setProductModal(false)}
+                            color="primary"
+                            className="flex-grow"
+                        >
+                            Adicionar
+                        </Button>
+                    </div>
+                </div>
+            </SimpleModal>
+
             <div className="grid grid-cols-4 gap-4">
-                {[1, 2, 3, 4].map(() => <ProductCard/>)}
+                {[1, 2, 3, 4].map(() => <ProductCard
+                    name="Abobrinha Paulista picado pequeno"
+                    unit="pacote"
+                    price={2.50}
+                />)}
             </div>
 
             <div className="grid grid-cols-4 gap-4">
-                {[1, 2, 3, 4].map(i => <ProductToggle id={i + ''}/>)}
+                {[1, 2, 3, 4].map(i => <ProductToggle
+                    id={i + ''}
+                    name="Abobrinha Paulista picado pequeno"
+                />)}
             </div>
 
             <SectionTitle>Another part of this</SectionTitle>
