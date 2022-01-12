@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
         return (
             <Html>
                 <Head />
-                <body>
+                <body className="min-h-screen">
                 <Main />
                 {/* Here we will mount our modal portal */}
                 <div id="modal" />

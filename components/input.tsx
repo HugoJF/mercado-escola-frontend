@@ -7,8 +7,8 @@ type ExtraProps = {
     error?: string;
 }
 
-export const Input: NextPage<NativeProps & ExtraProps> = ({id, name, placeholder, error, ...props}) => {
-    return <div>
+export const Input: NextPage<NativeProps & ExtraProps> = ({id, name, placeholder, error, className, ...props}) => {
+    return <div className={className}>
         <div className="group relative">
             <input
                 id={id}
