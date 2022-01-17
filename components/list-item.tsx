@@ -13,8 +13,9 @@ export const ListItem: NextPage<Props> = ({
                                               description,
                                               leftIcon: LeftIcon = ShoppingBag,
                                               rightIcon: RightIcon = ChevronRight,
-                                          }) => {
-    return <div className="duration-150 flex items-center p-3 hover:bg-gray-100 first:rounded-t last:rounded-b cursor-pointer">
+                                          }, ref) => {
+    return <div
+        className="duration-150 flex items-center p-3 hover:bg-gray-100 first:rounded-t last:rounded-b cursor-pointer">
         {LeftIcon && <LeftIcon className="my-3 ml-3 text-gray-500"/>}
 
         <div className="ml-4 flex flex-grow flex-col justify-center">

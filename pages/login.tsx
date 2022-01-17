@@ -4,7 +4,7 @@ import {BigTitle} from "../components/text/big-title";
 import {CompactCentered} from "../components/layouts/compact-centered";
 
 export default function Login() {
-    return <CompactCentered>
+    return <CompactCentered className="grid">
         <BigTitle>MercadoEscola</BigTitle>
 
         <Input placeholder="Email"/>

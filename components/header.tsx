@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import {useState} from "react";
 import {NextPage} from "next";
 import {Heart, Home, Icon, Menu, Search, Settings, ShoppingCart, User, X} from "react-feather";
@@ -71,8 +72,8 @@ export const Header: NextPage = () => {
     >
         <div className="flex justify-between md:justify-between h-20 items-stretch border-b border-gray-300">
             <IconContainer display="mobile" onClick={toggleMenu}>
-                {!menuOpen && <Menu />}
-                {menuOpen && <X />}
+                {!menuOpen && <Menu/>}
+                {menuOpen && <X/>}
             </IconContainer>
             <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-100 tracking-tighter cursor-pointer whitespace-nowrap">
                 Mercado Escola
@@ -91,13 +92,15 @@ export const Header: NextPage = () => {
                     </IconContainer>
                 ))}
 
-                <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-100 cursor-pointer">
-                    <User/>
-                    {/* TODO nome do usuario */}
-                    <span className="hidden md:inline whitespace-nowrap">
-                        Rafael Fulano
-                    </span>
-                </div>
+                <Link href="/account">
+                    <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-100 cursor-pointer">
+                        <User/>
+                        {/* TODO nome do usuario */}
+                        <span className="hidden md:inline whitespace-nowrap">
+                            Rafael Fulano
+                        </span>
+                    </div>
+                </Link>
             </div>
         </div>
         {menuOpen && <div

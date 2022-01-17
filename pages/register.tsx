@@ -4,7 +4,7 @@ import {CompactCentered} from "../components/layouts/compact-centered";
 import {PageTitle} from "../components/text/page-title";
 
 export default function Register() {
-    return <CompactCentered>
+    return <CompactCentered className="grid">
         <PageTitle>Dados para registro</PageTitle>
 
         <Input placeholder="Nome completo"/>

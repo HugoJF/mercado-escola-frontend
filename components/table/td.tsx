@@ -1,7 +1,14 @@
 import {NextPage} from "next";
+import clsx from "clsx";
 
-export const Td: NextPage = ({children}) => (
-    <td className="p-3 border-b border-gray-300">
+type Props = {
+    fit?: boolean;
+}
+
+export const Td: NextPage<Props> = ({fit = false, children}) => (
+    <td className={clsx('p-3 border-b border-gray-300', {
+        'w-1 whitespace-nowrap': fit,
+    })}>
         {children}
     </td>
 )
