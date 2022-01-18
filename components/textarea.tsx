@@ -2,15 +2,15 @@ import {DetailedHTMLProps, InputHTMLAttributes} from "react";
 import {NextPage} from "next";
 import clsx from "clsx";
 
-type NativeProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type NativeProps = DetailedHTMLProps<InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 type ExtraProps = {
     error?: string;
 }
 
-export const Input: NextPage<NativeProps & ExtraProps> = ({id, name, placeholder, error, className, ...props}) => {
+export const Textarea: NextPage<NativeProps & ExtraProps> = ({id, name, placeholder, error, className, ...props}) => {
     return <div className={className}>
         <div className="group relative">
-            <input
+            <textarea
                 id={id}
                 name={name}
                 {...props}
@@ -24,8 +24,8 @@ export const Input: NextPage<NativeProps & ExtraProps> = ({id, name, placeholder
 
             <label
                 htmlFor={id}
-                className={clsx('duration-150 absolute flex items-center pointer-events-none',
-                    '-translate-y-3 peer-placeholder-shown:translate-y-0 peer-focus:-translate-y-3',
+                className={clsx('duration-150 absolute top-0 pointer-events-none',
+                    'translate-y-3 peer-placeholder-shown:translate-y-6 peer-focus:translate-y-3',
                     'left-0 inset-y-0 pl-6 inset-left',
                     'text-sm cursor-text', {
                         'text-gray-500': !error,
