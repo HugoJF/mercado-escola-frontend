@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import {useState} from "react";
+import {forwardRef, useState} from "react";
 import {NextPage} from "next";
 import {Heart, Home, Icon, Menu, Search, Settings, ShoppingCart, User, X} from "react-feather";
 import clsx from "clsx";
@@ -8,55 +8,53 @@ type IconContainerProps = {
     display: 'mobile' | 'desktop';
     onClick?: () => void;
 }
-const IconContainer: NextPage<IconContainerProps> = ({display, children, onClick}) => (
-    <div
-        onClick={onClick}
-        className={clsx('duration-150 flex items-center px-6 hover:bg-gray-100 cursor-pointer', {
-            'hidden md:flex': display === 'desktop',
-            'flex md:hidden': display === 'mobile',
-        })}
-    >
-        {children}
-    </div>
-);
+const IconContainer: NextPage<IconContainerProps> = forwardRef<HTMLDivElement, IconContainerProps>(
+    ({display, children, onClick}, ref) => (
+        <div
+            ref={ref}
+            onClick={onClick}
+            className={clsx('duration-150 flex items-center px-6 hover:bg-gray-100 cursor-pointer', {
+                'hidden md:flex': display === 'desktop',
+                'flex md:hidden': display === 'mobile',
+            })}
+        >
+            {children}
+        </div>
+    ));
 
 const desktopMenu: { icon: Icon, href: string, display: 'mobile' | 'desktop' }[] = [{
     icon: Heart,
-    href: '/', // TODO,
+    href: '/',
     display: 'desktop',
 }, {
     icon: ShoppingCart,
-    href: '/about', // TODO
+    href: '/orders',
     display: 'desktop',
 }, {
     icon: Settings,
-    href: '/contact', // TODO
+    href: '/admin',
     display: 'desktop',
-}, {
-    icon: Search,
-    href: '/contact', // TODO
-    display: 'mobile',
 }];
 
 const mobileMenu: { icon: Icon, label: string, href: string }[] = [{
     icon: Home,
-    href: '/', // TODO,
+    href: '/',
     label: 'Início',
 }, {
     icon: Heart,
-    href: '/', // TODO,
+    href: '/favorites',
     label: 'Favoritos',
 }, {
     icon: ShoppingCart,
-    href: '/about', // TODO
+    href: '/orders',
     label: 'Pedidos',
 }, {
     icon: Settings,
-    href: '/contact', // TODO
+    href: '/admin',
     label: 'Administrativo',
 }, {
     icon: User,
-    href: '/contact', // TODO
+    href: '/profile',
     label: 'Minha conta',
 }];
 
@@ -87,9 +85,11 @@ export const Header: NextPage = () => {
             <div className="flex items-stretch">
                 {/* TODO missing href */}
                 {desktopMenu.map(({icon: Icon, href, display}) => (
-                    <IconContainer display={display}>
-                        <Icon/>
-                    </IconContainer>
+                    <Link href={href} key={href}>
+                        <IconContainer display={display}>
+                            <Icon/>
+                        </IconContainer>
+                    </Link>
                 ))}
 
                 <Link href="/account">
@@ -107,12 +107,12 @@ export const Header: NextPage = () => {
             className="py-2 w-full border-b border-gray-300 shadow-lg"
             onClick={toggleMenu}
         >
-            {mobileMenu.map(({label, icon: Icon}) => <div
-                className="flex items-center px-5 py-4 hover:bg-gray-100 cursor-pointer"
-            >
-                <Icon className="text-gray-500"/>
-                <span className="ml-4">{label}</span>
-            </div>)}
+            {mobileMenu.map(({label, href, icon: Icon}) => <Link href={href}>
+                <div className="flex items-center px-5 py-4 hover:bg-gray-100 cursor-pointer">
+                    <Icon className="text-gray-500"/>
+                    <span className="ml-4">{label}</span>
+                </div>
+            </Link>)}
         </div>}
         {/* TODO toggle this bar */}
         {!menuOpen && <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
