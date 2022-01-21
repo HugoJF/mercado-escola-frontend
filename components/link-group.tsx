@@ -12,7 +12,7 @@ export const LinkGroup: NextPage<Props> = ({title, icon: Icon, children}) => {
             <Icon className="text-gray-500"/>
             <span>{title}</span>
         </div>
-        <hr className="mt-4 mb-1 border-gray-300"/>
+        <hr className="mt-4 mb-2 border-gray-300"/>
         <ul className="text-sm text-gray-700">
             {children}
         </ul>

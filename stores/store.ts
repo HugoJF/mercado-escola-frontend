@@ -9,6 +9,7 @@ export const store = init<RootModel>({
     plugins: [
         persist({
             key: 'persist-storage',
+            whitelist: ['auth'],
             storage,
         }),
         createImmerPlugin(),
