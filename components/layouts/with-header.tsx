@@ -11,7 +11,7 @@ export const WithHeader: NextPage<Props> = ({className, children}) => {
     return (<>
             <Header/>
             <Breadcrumb/>
-            <main className={clsx('container mx-auto px-6 space-y-6 pt-20 pb-10', className)}>
+            <main className={clsx('container mx-auto px-6 space-y-6 py-10', className)}>
                 {children}
             </main>
         </>

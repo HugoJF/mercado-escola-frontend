@@ -2,7 +2,6 @@ import {Input} from "../components/input";
 import {Button} from "../components/button";
 import {BigTitle} from "../components/text/big-title";
 import {CompactCentered} from "../components/layouts/compact-centered";
-import {useAuth} from "../helpers/selectors";
 import {useDispatch} from "react-redux";
 import {Dispatch} from "../stores/store";
 import {LoginCredentials} from "../types/auth";
@@ -12,10 +11,9 @@ import Link from "next/link";
 import {Guest} from "../components/gates/guest";
 
 export default function Login() {
-    const auth = useAuth();
     const router = useRouter();
     const dispatch = useDispatch<Dispatch>();
-    const {register, handleSubmit, formState: {errors}} = useForm<LoginCredentials>();
+    const {register, handleSubmit, formState: {isSubmitting, errors}} = useForm<LoginCredentials>();
 
     async function login(credentials: LoginCredentials) {
         try {
@@ -46,7 +44,7 @@ export default function Login() {
                 <a className="text-orange-500 text-right" href="#">Esqueceu a sua senha?</a>
             </Link>
 
-            <Button color="primary">Entrar</Button>
+            <Button loading={isSubmitting} color="primary">Entrar</Button>
 
             <Link href="/register">
                 <a className="block text-center">Ainda não possui uma conta? <span className="text-orange-500">Registre-se clicando aqui</span></a>

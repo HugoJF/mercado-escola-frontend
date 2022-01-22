@@ -26,17 +26,20 @@ export const Breadcrumb: NextPage = () => {
 
         return <>
             {crumb.root && buildBreadcrumb(crumb.root)}
-            {route !== '/' && <ChevronRight/>}
-            <a
-                className="duration-150 px-2 py-1 hover:text-gray-500 hover:bg-gray-200 rounded"
-                href={route}
-            >
-                {crumb.title}
-            </a>
+            {route !== '/' && <ChevronRight className="h-5"/>}
+            <Link href={route}>
+                <a
+                    className="duration-150 px-2 py-1 hover:text-gray-600 hover:bg-gray-200 rounded"
+                >
+                    {crumb.title}
+                </a>
+            </Link>
         </>
     }
 
-    return <div className="flex items-center space-x-1 py-2 px-6 text-gray-400 text-sm border-gray-300 border-b">
-        {buildBreadcrumb(router.route)}
+    return <div className="text-gray-500 text-sm border-gray-300 border-b">
+        <div className="container mx-auto flex items-center py-2 px-6">
+            {buildBreadcrumb(router.route)}
+        </div>
     </div>;
 };

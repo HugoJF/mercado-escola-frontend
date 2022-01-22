@@ -1,12 +1,14 @@
 import {NextPage} from "next";
 import {ButtonHTMLAttributes, DetailedHTMLProps} from "react";
 import clsx from "clsx";
+import {Loader} from "react-feather";
 
 type ButtonColor = 'default' | 'primary' | 'danger';
 
 type NativeProps = DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>
 type ExtraProps = {
     color?: ButtonColor,
+    loading?: boolean,
 }
 
 const classMap: { [key in ButtonColor]: string } = {
@@ -15,11 +17,20 @@ const classMap: { [key in ButtonColor]: string } = {
     danger: 'text-white bg-red-600 hover:bg-red-700',
 }
 
-export const Button: NextPage<NativeProps & ExtraProps> = ({color = 'default', className, children, ...rest}) => {
+export const Button: NextPage<NativeProps & ExtraProps> = ({
+                                                               color = 'default',
+                                                               loading = false,
+                                                               className,
+                                                               children,
+                                                               ...rest
+                                                           }) => {
     return <button
-        className={clsx('duration-150 px-12 py-4 rounded', classMap[color], className)}
+        className={clsx('text-center duration-150 px-12 py-4 rounded', classMap[color], className, {
+            'opacity-50 cursor-not-allowed': loading,
+        })}
         {...rest}
     >
-        {children}
+        {!loading && children}
+        {loading && <Loader className="inline h-6 w-6 animate-spin"/>}
     </button>;
 };
