@@ -3,18 +3,13 @@ import {ChevronRight} from "react-feather";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {ReactNode} from "react";
-
-type Breadcrumbs = {
-    [key: string]: {
-        title: string,
-        root?: string,
-    };
-}
+import {Breadcrumbs} from "../types/breadcrumbs";
 
 const bc: Breadcrumbs = {
     '/': {title: 'Início'},
     '/admin': {title: 'Administrativo', root: '/'},
     '/account': {title: 'Minha conta', root: '/'},
+    '/account/update-phone': {title: 'Atualizando número de telefone', root: '/account'},
     '/admin/products': {title: 'Produtos', root: '/admin'},
     '/admin/products/create': {title: 'Registrando novo produto', root: '/admin/products'},
 }
