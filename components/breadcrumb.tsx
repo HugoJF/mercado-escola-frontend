@@ -14,6 +14,7 @@ type Breadcrumbs = {
 const bc: Breadcrumbs = {
     '/': {title: 'Início'},
     '/admin': {title: 'Administrativo', root: '/'},
+    '/account': {title: 'Minha conta', root: '/'},
     '/admin/products': {title: 'Produtos', root: '/admin'},
     '/admin/products/create': {title: 'Registrando novo produto', root: '/admin/products'},
 }
@@ -23,6 +24,10 @@ export const Breadcrumb: NextPage = () => {
 
     function buildBreadcrumb(route: string): ReactNode {
         const crumb = bc[route];
+
+        if (!crumb) {
+            throw new Error(`Missing breadcrumb for route ${route}`);
+        }
 
         return <>
             {crumb.root && buildBreadcrumb(crumb.root)}
