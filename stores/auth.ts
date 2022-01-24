@@ -27,14 +27,10 @@ export const auth = createModel<RootModel>()({
         },
 
         async me(): Promise<UserProperties> {
-            await dispatch.auth.csrf();
             const response = await window.axios.get('/api/me');
-
             const user = response.data.user;
 
-            if (user) {
-                dispatch.auth.setUser(user as UserProperties);
-            }
+            dispatch.auth.setUser(user as UserProperties);
 
             return user;
         },
