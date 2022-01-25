@@ -13,7 +13,7 @@ const IconContainer: NextPage<IconContainerProps> = forwardRef<HTMLDivElement, I
         <div
             ref={ref}
             onClick={onClick}
-            className={clsx('duration-150 flex items-center px-6 hover:bg-gray-100 cursor-pointer', {
+            className={clsx('duration-150 flex items-center px-6 hover:bg-gray-50 cursor-pointer', {
                 'hidden md:flex': display === 'desktop',
                 'flex md:hidden': display === 'mobile',
             })}
@@ -73,7 +73,7 @@ export const Header: NextPage = () => {
                 {!menuOpen && <Menu/>}
                 {menuOpen && <X/>}
             </IconContainer>
-            <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-100 tracking-tighter cursor-pointer whitespace-nowrap">
+            <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-50 tracking-tighter cursor-pointer whitespace-nowrap">
                 Mercado Escola
             </h3>
             <div className="hidden md:flex items-stretch flex-grow py-3 px-6">
@@ -93,7 +93,7 @@ export const Header: NextPage = () => {
                 ))}
 
                 <Link href="/account">
-                    <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-100 cursor-pointer">
+                    <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-50 cursor-pointer">
                         <User/>
                         {/* TODO nome do usuario */}
                         <span className="hidden md:inline whitespace-nowrap">
@@ -108,7 +108,7 @@ export const Header: NextPage = () => {
             onClick={toggleMenu}
         >
             {mobileMenu.map(({label, href, icon: Icon}) => <Link href={href}>
-                <div className="flex items-center px-5 py-4 hover:bg-gray-100 cursor-pointer">
+                <div className="flex items-center px-5 py-4 hover:bg-gray-50 cursor-pointer">
                     <Icon className="text-gray-500"/>
                     <span className="ml-4">{label}</span>
                 </div>

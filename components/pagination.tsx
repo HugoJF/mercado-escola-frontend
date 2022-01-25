@@ -7,7 +7,7 @@ type ContainerProps = {
 }
 const Container: NextPage<ContainerProps> = ({selected = false, children}) => (
     <div className={clsx('duration-150 flex items-center justify-center h-12 w-12 rounded cursor-pointer', {
-        'border border-gray-300 bg-white hover:bg-gray-100': !selected,
+        'border border-gray-300 bg-white hover:bg-gray-50': !selected,
         'bg-gray-700 hover:bg-gray-800 text-white font-medium': selected,
     })}>
         {children}

@@ -14,7 +14,7 @@ export const Select: NextPage<Props> = ({chevron = true, icon: Icon, children}) 
             <Icon/>
         </div>}
         <select
-            className={clsx('duration-150 py-6 px-8 bg-white hover:bg-gray-100',
+            className={clsx('duration-150 py-6 px-8 bg-white hover:bg-gray-50',
                 'border border-gray-300 rounded appearance-none cursor-pointer', {
                     'pl-16': Icon,
                     'pr-16': chevron,

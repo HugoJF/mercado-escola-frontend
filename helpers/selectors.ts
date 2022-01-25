@@ -8,3 +8,7 @@ export function useToasts() {
 export function useAuth() {
     return useSelector((state: RootState) => state.auth);
 }
+
+export function useAddress() {
+    return useSelector((state: RootState) => state.address);
+}

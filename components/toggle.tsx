@@ -17,7 +17,7 @@ export const Toggle: NextPage<NativeProps & ExtraProps> = ({id, name, placeholde
         />
         <label
             htmlFor={id}
-            className="select-none duration-150 flex items-center justify-center p-6 bg-white hover:bg-gray-100 peer-checked:bg-blue-600 peer-checked:text-white cursor-pointer"
+            className="select-none duration-150 flex items-center justify-center p-6 bg-white hover:bg-gray-50 peer-checked:bg-blue-600 peer-checked:text-white cursor-pointer"
         >
             {children}
         </label>

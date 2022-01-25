@@ -10,6 +10,9 @@ const bc: Breadcrumbs = {
     '/admin': {title: 'Administrativo', root: '/'},
     '/account': {title: 'Minha conta', root: '/'},
     '/account/update-phone': {title: 'Atualizando número de telefone', root: '/account'},
+    '/account/addresses': {title: 'Endereços', root: '/account'},
+    '/account/addresses/new': {title: 'Adicionando um novo endereço', root: '/account/addresses'},
+    '/account/addresses/confirm': {title: 'Confirmando endereço', root: '/account/addresses'},
     '/admin/products': {title: 'Produtos', root: '/admin'},
     '/admin/products/create': {title: 'Registrando novo produto', root: '/admin/products'},
 }

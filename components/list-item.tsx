@@ -19,7 +19,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(({
     return <div
         ref={ref}
         onClick={onClick}
-        className="duration-150 flex items-center p-3 hover:bg-gray-100 first:rounded-t last:rounded-b cursor-pointer">
+        className="duration-150 flex items-center p-3 hover:bg-gray-50 first:rounded-t last:rounded-b cursor-pointer">
         {LeftIcon && <LeftIcon className="my-3 ml-3 text-gray-500"/>}
 
         <div className="ml-4 flex flex-grow flex-col justify-center">

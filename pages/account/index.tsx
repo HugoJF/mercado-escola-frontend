@@ -19,7 +19,9 @@ const AccountIndex: NextPage = () => {
             <Link passHref href="/account/update-phone">
                 <ListItem leftIcon={Phone} title="Telefone" description={auth?.me?.phone ?? undefined}/>
             </Link>
-            <ListItem leftIcon={MapPin} title="Endereços"/>
+            <Link passHref href="/account/addresses">
+                <ListItem leftIcon={MapPin} title="Endereços"/>
+            </Link>
         </ListItemGroup>
 
         <PageTitle>Mais</PageTitle>
