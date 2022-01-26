@@ -41,7 +41,7 @@ const Home: NextPage = () => {
     return <Admin><WithHeader>
         <PageTitle>Administrativo</PageTitle>
 
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {menu.map(item => (
                 <LinkGroup key={item.title} title={item.title} icon={item.icon}>
                     {item.links.map(link => (

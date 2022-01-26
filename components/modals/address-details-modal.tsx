@@ -21,13 +21,16 @@ export const AddressDetailsModal: NextPage<Props> = ({address, open, onClose, ch
         description={address}
     >
         <div className="flex flex-col gap-6 p-6">
-            <div className="grid grid-cols-2 gap-6">
+            <div className="flex flex-col md:flex-row gap-6">
                 <Input
+                    type="number"
                     placeholder="Número do endereço"
+                    className="w-full md:w-1/3"
                     onChange={e => dispatch.address.setNumber(e.target.value)}
                 />
                 <Input
                     placeholder="Complemento (opcional)"
+                    className="w-full md:w-2/3"
                     onChange={e => dispatch.address.setComplement(e.target.value)}
                 />
             </div>

@@ -28,7 +28,7 @@ const AddressesIndex: NextPage = () => {
                     leftIcon={MapPin}
                     rightIcon={MoreVertical}
                     title={address.address}
-                    description={address.complement}
+                    description={[address.number, address.complement].filter(Boolean).join(', ')}
                 />
             ))}
         </ListItemGroup>}
