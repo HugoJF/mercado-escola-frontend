@@ -31,7 +31,9 @@ const AccountIndex: NextPage = () => {
             <ListItem leftIcon={Book} title="Pedidos"/>
             <ListItem leftIcon={Heart} title="Favoritos"/>
             <ListItem leftIcon={Flag} title="Ajuda"/>
-            <ListItem leftIcon={LogOut} title="Sair"/>
+            <Link href="/logout">
+                <ListItem leftIcon={LogOut} title="Sair"/>
+            </Link>
         </ListItemGroup>
     </WithHeader></Authed>
 }

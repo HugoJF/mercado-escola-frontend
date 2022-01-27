@@ -7,6 +7,7 @@ import {Breadcrumbs} from "../types/breadcrumbs";
 
 const bc: Breadcrumbs = {
     '/': {title: 'Início'},
+    '/logout': {title: 'Sair', root: '/'},
     '/cart': {title: 'Carrinho', root: '/'},
     '/admin': {title: 'Administrativo', root: '/'},
     '/account': {title: 'Minha conta', root: '/'},
