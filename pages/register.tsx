@@ -3,20 +3,55 @@ import {Button} from "../components/button";
 import {CompactCentered} from "../components/layouts/compact-centered";
 import {PageTitle} from "../components/text/page-title";
 import Link from "next/link";
+import {useForm} from "react-hook-form";
+import {RegisterCredentials} from "../types/auth";
+import {useDispatcher} from "../hooks/use-dispatcher";
+import {useRouter} from "next/router";
 
 export default function Register() {
-    return <CompactCentered className="grid">
-        <PageTitle>Dados para registro</PageTitle>
+    const {register, handleSubmit, formState: {isSubmitting, errors}} = useForm<RegisterCredentials>();
+    const dispatch = useDispatcher();
+    const router = useRouter();
 
-        <Input placeholder="Nome completo"/>
-        <Input placeholder="Email"/>
-        <Input placeholder="Senha"/>
+    async function submit(credentials: RegisterCredentials) {
+        try {
+            await dispatch.auth.registration(credentials);
+            await dispatch.auth.login({
+                email: credentials.email,
+                password: credentials.password,
+            })
+            await router.push('/')
+        } catch (e: any) {
+            // TODO type and handle errors
+        }
+    }
 
-        {/* TODO link */}
-        <Button color="primary">Registrar</Button>
+    return <CompactCentered>
+        <form className="grid space-y-6" onSubmit={handleSubmit(submit)}>
+            <PageTitle>Dados para registro</PageTitle>
 
-        <Link href="/login">
-            <a className="block text-center" href="#">Já possui uma conta? <span className="text-orange-500">Clique aqui para entrar</span></a>
-        </Link>
+            <Input
+                placeholder="Nome completo"
+                error={errors.name?.message}
+                {...register('name', {required: true})}
+            />
+            <Input
+                placeholder="Email"
+                error={errors.email?.message}
+                {...register('email', {required: 'Digite seu email'})}
+            />
+            <Input
+                placeholder="Senha"
+                type="password"
+                error={errors.password?.message}
+                {...register('password', {required: 'Digite sua senha'})}
+            />
+
+            <Button loading={isSubmitting} color="primary">Registrar</Button>
+
+            <Link href="/login">
+                <a className="block text-center" href="#">Já possui uma conta? <span className="text-orange-500">Clique aqui para entrar</span></a>
+            </Link>
+        </form>
     </CompactCentered>
 }

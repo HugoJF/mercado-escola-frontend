@@ -18,6 +18,7 @@ export default function Login() {
     async function logout() {
         try {
             await dispatch.auth.logout();
+            await dispatch.auth.me();
             await router.push('/login')
         } catch (e: any) {
             // TODO type and handle errors

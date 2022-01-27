@@ -36,10 +36,10 @@ export const auth = createModel<RootModel>()({
         },
 
         async registration(payload: RegisterCredentials): Promise<void> {
-            const {name, email, password, password_confirmation} = payload;
+            const {name, email, password} = payload;
 
             return await window.axios.post('/register', {
-                name, email, password, password_confirmation,
+                name, email, password, password_confirmation: password
             });
         },
 
