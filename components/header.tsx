@@ -3,6 +3,7 @@ import {forwardRef, useState} from "react";
 import {NextPage} from "next";
 import {Heart, Home, Icon, Menu, Search, Settings, ShoppingCart, User, X} from "react-feather";
 import clsx from "clsx";
+import {useAuth} from "../helpers/selectors";
 
 type IconContainerProps = {
     display: 'mobile' | 'desktop';
@@ -59,6 +60,8 @@ const mobileMenu: { icon: Icon, label: string, href: string }[] = [{
 }];
 
 export const Header: NextPage = () => {
+    const auth = useAuth();
+
     const [menuOpen, setMenuOpen] = useState(false);
 
     function toggleMenu() {
@@ -83,7 +86,6 @@ export const Header: NextPage = () => {
                 </div>
             </div>
             <div className="flex items-stretch">
-                {/* TODO missing href */}
                 {desktopMenu.map(({icon: Icon, href, display}) => (
                     <Link href={href} key={href}>
                         <IconContainer display={display}>
@@ -95,9 +97,8 @@ export const Header: NextPage = () => {
                 <Link href="/account">
                     <div className="duration-150 flex items-center space-x-3 px-6 hover:bg-gray-50 cursor-pointer">
                         <User/>
-                        {/* TODO nome do usuario */}
                         <span className="hidden md:inline whitespace-nowrap">
-                            Rafael Fulano
+                            {auth.me?.name}
                         </span>
                     </div>
                 </Link>
@@ -115,12 +116,14 @@ export const Header: NextPage = () => {
             </Link>)}
         </div>}
         {/* TODO toggle this bar */}
-        {!menuOpen && <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
-            <ShoppingCart/>
-            {/* TODO link */}
-            <a className="flex-grow text-center" href="#">Ver carrinho</a>
-            {/* TODO price */}
-            <span>R$ 3,00</span>
-        </div>}
+        {!menuOpen && <Link href="/cart">
+            <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
+                <ShoppingCart/>
+                {/* TODO link */}
+                <span className="flex-grow text-center">Ver carrinho</span>
+                {/* TODO price */}
+                <span>R$ 3,00</span>
+            </div>
+        </Link>}
     </header>;
 };
