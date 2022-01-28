@@ -1,6 +1,6 @@
 import {FC} from "react";
 import {ListItem} from "../list-item";
-import {Icon, MapPin, MoreVertical} from "react-feather";
+import {Icon, MapPin} from "react-feather";
 import {ListItemGroup} from "../list-item-group";
 import {AddressType} from "../../models/addresses";
 

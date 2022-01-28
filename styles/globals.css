@@ -8,5 +8,6 @@ body {
 svg {
     @apply flex-shrink-0;
 }
+
 @tailwind components;
 @tailwind utilities;

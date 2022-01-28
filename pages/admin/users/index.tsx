@@ -20,7 +20,7 @@ const UsersIndex: NextPage = () => {
                 <TheadTd>Cargo</TheadTd>
             </Thead>
             <Tbody>
-                {[1,2,3,4,5].map(() => (
+                {[1, 2, 3, 4, 5].map(() => (
                     <Tr>
                         <Td>
                             <h5>Rafael Fulano</h5>
