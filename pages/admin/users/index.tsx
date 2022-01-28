@@ -9,9 +9,23 @@ import {Tr} from "@components/table/tr";
 import {Td} from "@components/table/td";
 import {Badge} from "@components/badge";
 import {Select} from "@components/select";
+import {useUsers} from "@queries/use-users";
+import {useUserUpdate} from "@mutations/use-user-update";
+import {UserType} from "@models/users";
+import {Authed} from "@components/gates/authed";
 
 const UsersIndex: NextPage = () => {
-    return <WithHeader>
+    const users = useUsers();
+    const updateUser = useUserUpdate();
+
+    async function handleUserUpdate(user: UserType, role: string) {
+        const admin = role === 'administrator';
+        // TODO handle exceptions
+        await updateUser.mutateAsync({id: user.id, data: {admin}});
+        await users.refetch()
+    }
+
+    return <Authed><WithHeader>
         <PageTitle>Usuários registrados</PageTitle>
         <Table>
             <Thead>
@@ -20,25 +34,33 @@ const UsersIndex: NextPage = () => {
                 <TheadTd>Cargo</TheadTd>
             </Thead>
             <Tbody>
-                {[1, 2, 3, 4, 5].map(() => (
-                    <Tr>
+                {users.data?.data.data.map(user => (
+                    <Tr key={user.id}>
                         <Td>
-                            <h5>Rafael Fulano</h5>
-                            <span className="block text-gray-700 text-sm mono">rafael.fulano@gmail.com</span>
+                            <h5>{user.name}</h5>
+                            <span className="block text-gray-700 text-sm font-mono">{user.email}</span>
                         </Td>
                         <Td>
-                            <Badge>Verificado</Badge>
+                            {user.email_verified_at && <Badge color="green">Verificado</Badge>}
+                            {!user.email_verified_at && <Badge color="red">Pendente</Badge>}
                         </Td>
                         <Td fit>
-                            <Select>
-                                <option value="administrator">Administrador</option>
-                                <option value="user">Usuário</option>
+                            <Select
+                                onChange={e => handleUserUpdate(user, e.target.value)}
+                                value={user.admin ? 'administrator' : 'user'}
+                            >
+                                <option value="administrator">
+                                    Administrador
+                                </option>
+                                <option value="user">
+                                    Usuário
+                                </option>
                             </Select>
                         </Td>
                     </Tr>
                 ))}
             </Tbody>
         </Table>
-    </WithHeader>
+    </WithHeader></Authed>
 }
 export default UsersIndex

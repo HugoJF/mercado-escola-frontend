@@ -1,13 +1,16 @@
 import {NextPage} from "next";
+import {DetailedHTMLProps, SelectHTMLAttributes} from "react";
 import {ChevronDown, Icon} from "react-feather";
 import clsx from "clsx";
 
-type Props = {
+type NativeProps = DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>
+type ComponentProps = {
     chevron?: boolean;
     icon?: Icon;
 }
+type Props = NativeProps & ComponentProps;
 
-export const Select: NextPage<Props> = ({chevron = true, icon: Icon, children}) => {
+export const Select: NextPage<Props> = ({chevron = true, icon: Icon, children, ...rest}) => {
     return <div className="inline-block relative">
         {Icon &&
         <div className="absolute flex items-center left-0 top-0 bottom-0 ml-6 text-gray-500 pointer-events-none">
@@ -19,6 +22,7 @@ export const Select: NextPage<Props> = ({chevron = true, icon: Icon, children}) 
                     'pl-16': Icon,
                     'pr-16': chevron,
                 })}
+            {...rest}
         >
             {children}
         </select>
