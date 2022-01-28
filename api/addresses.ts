@@ -1,4 +1,4 @@
-import {AddressProperties, AddressType} from "../types/addresses";
+import {AddressProperties, AddressType} from "../models/addresses";
 import {bxios} from "../helpers/bxios";
 
 export const addresses = {

@@ -1,9 +1,9 @@
+import {NextPage} from "next";
 import Link from 'next/link';
 import {forwardRef, useState} from "react";
-import {NextPage} from "next";
 import {Heart, Home, Icon, Menu, Search, Settings, ShoppingCart, User, X} from "react-feather";
 import clsx from "clsx";
-import {useAuth} from "../helpers/selectors";
+import {useAuth} from "@helpers/selectors";
 
 type IconContainerProps = {
     display: 'mobile' | 'desktop';

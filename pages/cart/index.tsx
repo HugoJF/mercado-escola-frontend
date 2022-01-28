@@ -1,15 +1,15 @@
 import {NextPage} from "next";
-import {Authed} from "../../components/gates/authed";
-import {WithHeader} from "../../components/layouts/with-header";
-import {PageTitle} from "../../components/text/page-title";
-import {SectionTitle} from "../../components/section-title";
-import {Button} from "../../components/button";
 import Link from "next/link";
-import {Calendar, Edit, MapPin, ShoppingBag, Trash} from "react-feather";
-import {CartTypeModal} from "../../components/modals/cart-type-modal";
 import {useState} from "react";
-import {AddressSelectionModal} from "../../components/modals/address-selection-modal";
-import {AddressType} from "../../types/addresses";
+import {Calendar, Edit, MapPin, ShoppingBag, Trash} from "react-feather";
+import {Authed} from "@components/gates/authed";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {SectionTitle} from "@components/section-title";
+import {Button} from "@components/button";
+import {CartTypeModal} from "@components/modals/cart-type-modal";
+import {AddressSelectionModal} from "@components/modals/address-selection-modal";
+import {AddressType} from "@models/addresses";
 
 // TODO: address selection and cancelation needs work
 const CartIndex: NextPage = () => {

@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "react-query";
 import {api} from "../api";
-import {OrderType} from "../types/orders";
+import {OrderType} from "@models/orders";
 
 export function useOrderCancel() {
     const queryClient = useQueryClient();

@@ -1,14 +1,14 @@
-import {Input} from "../components/input";
-import {Button} from "../components/button";
-import {BigTitle} from "../components/text/big-title";
-import {CompactCentered} from "../components/layouts/compact-centered";
-import {useDispatch} from "react-redux";
-import {Dispatch} from "../stores/store";
-import {LoginCredentials} from "../types/auth";
-import {useForm} from "react-hook-form";
-import {useRouter} from "next/router";
 import Link from "next/link";
-import {Guest} from "../components/gates/guest";
+import {useRouter} from "next/router";
+import {useDispatch} from "react-redux";
+import {useForm} from "react-hook-form";
+import {LoginCredentials} from "@models/auth";
+import {Input} from "@components/input";
+import {Button} from "@components/button";
+import {BigTitle} from "@components/text/big-title";
+import {CompactCentered} from "@components/layouts/compact-centered";
+import {Guest} from "@components/gates/guest";
+import {Dispatch} from "../stores/store";
 
 export default function Login() {
     const router = useRouter();

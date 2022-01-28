@@ -1,6 +1,6 @@
 import {useMutation, useQueryClient} from "react-query";
 import {api} from "../api";
-import {UserProperties} from "../types/users";
+import {UserProperties} from "@models/users";
 
 type Params = {
     id: Id;

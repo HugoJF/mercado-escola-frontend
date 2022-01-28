@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "react-query";
-import {OrdersProperties} from "../types/orders";
+import {OrdersProperties} from "@models/orders";
 import {api} from "../api";
 
 type Params = {

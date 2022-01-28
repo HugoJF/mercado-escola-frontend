@@ -1,11 +1,9 @@
-import {LoginCredentials} from "../types/auth";
-import {useForm} from "react-hook-form";
 import {useRouter} from "next/router";
 import {useEffect} from "react";
-import {WithHeader} from "../components/layouts/with-header";
-import {Authed} from "../components/gates/authed";
 import {Loader} from "react-feather";
-import {useDispatcher} from "../hooks/use-dispatcher";
+import {WithHeader} from "@components/layouts/with-header";
+import {Authed} from "@components/gates/authed";
+import {useDispatcher} from "@hooks/use-dispatcher";
 
 export default function Login() {
     const router = useRouter();

@@ -1,8 +1,8 @@
-import {CompactCentered} from "../../components/layouts/compact-centered";
-import {PageTitle} from "../../components/text/page-title";
-import {Button} from "../../components/button";
 import Link from "next/link";
-import {Mail} from "../../components/svg/mail";
+import {CompactCentered} from "@components/layouts/compact-centered";
+import {PageTitle} from "@components/text/page-title";
+import {Button} from "@components/button";
+import {Mail} from "@components/svg/mail";
 
 export default function ForgotPasswordSent() {
     return <CompactCentered className="grid">

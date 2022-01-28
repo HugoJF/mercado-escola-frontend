@@ -1,6 +1,6 @@
 import {bxios} from "../helpers/bxios";
-import {ResourceResponse} from "../types/global";
-import {ProductType} from "../types/products";
+import {ResourceResponse} from "../models/global";
+import {ProductType} from "../models/products";
 
 export const favorites = {
     index: () => bxios()

@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "react-query";
-import {AddressProperties} from "../types/addresses";
+import {AddressProperties} from "@models/addresses";
 import {api} from "../api";
 
 export function useAddressCreate() {

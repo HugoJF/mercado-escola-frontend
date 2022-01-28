@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useEffect, useState} from "react";
-import {useDispatcher} from "../hooks/use-dispatcher";
-import {load} from "../library/google";
+import {useDispatcher} from "@hooks/use-dispatcher";
+import {load} from "@library/google";
 
 const Global: NextPage = ({children}) => {
     const [loaded, setLoaded] = useState(false);

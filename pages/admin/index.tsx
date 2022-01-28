@@ -1,11 +1,11 @@
 import {NextPage} from "next";
-import {PageTitle} from "../../components/text/page-title";
-import {LinkGroup} from "../../components/link-group";
-import {ShoppingBag, ShoppingCart, User, Users} from "react-feather";
-import {LinkGroupItem} from "../../components/link-group-item";
-import {WithHeader} from "../../components/layouts/with-header";
 import Link from "next/link";
-import {Admin} from "../../components/gates/admin";
+import {ShoppingBag, ShoppingCart, User, Users} from "react-feather";
+import {PageTitle} from "@components/text/page-title";
+import {LinkGroup} from "@components/link-group";
+import {LinkGroupItem} from "@components/link-group-item";
+import {WithHeader} from "@components/layouts/with-header";
+import {Admin} from "@components/gates/admin";
 
 const menu = [{
     title: 'Produtos',

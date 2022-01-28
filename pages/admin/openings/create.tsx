@@ -1,8 +1,8 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import {Input} from "../../../components/input";
-import {Button} from "../../../components/button";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Input} from "@components/input";
+import {Button} from "@components/button";
 
 const AdminProductsCreate: NextPage = () => {
     return <WithHeader className="grid">

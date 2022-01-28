@@ -1,6 +1,7 @@
 import {createModel} from "@rematch/core";
 import {RootModel} from "./index";
 
+// TODO move to models
 export type AddressState = {
     address?: string;
     number?: string;

@@ -1,13 +1,13 @@
-import {Button} from "../../components/button";
-import {PageTitle} from "../../components/text/page-title";
-import {Input} from "../../components/input";
-import {WithHeader} from "../../components/layouts/with-header";
 import {useRouter} from "next/router";
-import {useAuth} from "../../helpers/selectors";
-import {useForm} from "react-hook-form";
 import {useEffect} from "react";
 import {useDispatch} from "react-redux";
-import {Authed} from "../../components/gates/authed";
+import {useForm} from "react-hook-form";
+import {Button} from "@components/button";
+import {PageTitle} from "@components/text/page-title";
+import {Input} from "@components/input";
+import {WithHeader} from "@components/layouts/with-header";
+import {Authed} from "@components/gates/authed";
+import {useAuth} from "@helpers/selectors";
 
 // TODO: move to /types
 type PhoneUpdateForm = {

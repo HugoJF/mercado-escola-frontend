@@ -1,10 +1,10 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import {Input} from "../../../components/input";
-import {Button} from "../../../components/button";
-import {ListItem} from "../../../components/list-item";
-import {ListItemGroup} from "../../../components/list-item-group";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Input} from "@components/input";
+import {Button} from "@components/button";
+import {ListItem} from "@components/list-item";
+import {ListItemGroup} from "@components/list-item-group";
 
 const ProductsIndex: NextPage = () => {
     return <WithHeader>

@@ -1,14 +1,14 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import {Table} from "../../../components/table/table";
-import {Thead} from "../../../components/table/thead";
-import {TheadTd} from "../../../components/table/thead-td";
-import {Tbody} from "../../../components/table/tbody";
-import {Tr} from "../../../components/table/tr";
-import {Td} from "../../../components/table/td";
-import {Badge} from "../../../components/badge";
-import {Select} from "../../../components/select";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Table} from "@components/table/table";
+import {Thead} from "@components/table/thead";
+import {TheadTd} from "@components/table/thead-td";
+import {Tbody} from "@components/table/tbody";
+import {Tr} from "@components/table/tr";
+import {Td} from "@components/table/td";
+import {Badge} from "@components/badge";
+import {Select} from "@components/select";
 
 const UsersIndex: NextPage = () => {
     return <WithHeader>

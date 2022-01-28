@@ -1,5 +1,5 @@
-import {UserProperties, UserType} from "../types/users";
-import {ResourceResponse} from "../types/global";
+import {UserProperties, UserType} from "../models/users";
+import {ResourceResponse} from "../models/global";
 import {bxios} from "../helpers/bxios";
 
 export const users = {

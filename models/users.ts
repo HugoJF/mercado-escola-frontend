@@ -1,4 +1,4 @@
-import {SoftDeletes, Timestamps} from "~/types";
+import {SoftDeletes, Timestamps} from "@models/global";
 
 export type UserType = UserProperties & UserComputedProperties & Timestamps & SoftDeletes;
 

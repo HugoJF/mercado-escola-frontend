@@ -1,9 +1,9 @@
+import {FC, useState} from "react";
+import {MapPin} from "react-feather";
+import PlacesAutocomplete from "react-places-autocomplete";
 import {Input} from "./input";
 import {ListItemGroup} from "./list-item-group";
 import {ListItem} from "./list-item";
-import {MapPin} from "react-feather";
-import PlacesAutocomplete from "react-places-autocomplete";
-import {FC, useState} from "react";
 
 type Props = {
     onSelect: (address: string) => void;

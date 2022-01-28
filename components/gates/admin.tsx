@@ -1,6 +1,6 @@
 import {FC, useEffect} from "react";
-import {useAuth} from "../../helpers/selectors";
 import {useRouter} from "next/router";
+import {useAuth} from "@helpers/selectors";
 
 // TODO: need admin check
 export const Admin: FC = ({children}) => {

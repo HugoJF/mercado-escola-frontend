@@ -4,7 +4,7 @@ import {useDropzone} from "react-dropzone";
 
 type FileWithPreview = { file: File, preview: string };
 
-const Dropzone: NextPage = () => {
+export const Dropzone: NextPage = () => {
     const [uploadingFiles, setUploadingFiles] = useState<FileWithPreview[]>([]);
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
@@ -35,4 +35,3 @@ const Dropzone: NextPage = () => {
         </div>
     </section>
 }
-export default Dropzone

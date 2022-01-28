@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {Google} from "../library/google";
+import {Google} from "@library/google";
 
 export const useGeocode = (address: string) => {
     const [center, setCenter] = useState<[number, number] | undefined>(undefined);

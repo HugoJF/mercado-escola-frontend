@@ -1,12 +1,12 @@
-import {Input} from "../components/input";
-import {Button} from "../components/button";
-import {CompactCentered} from "../components/layouts/compact-centered";
-import {PageTitle} from "../components/text/page-title";
 import Link from "next/link";
-import {useForm} from "react-hook-form";
-import {RegisterCredentials} from "../types/auth";
-import {useDispatcher} from "../hooks/use-dispatcher";
 import {useRouter} from "next/router";
+import {useForm} from "react-hook-form";
+import {Input} from "@components/input";
+import {Button} from "@components/button";
+import {CompactCentered} from "@components/layouts/compact-centered";
+import {PageTitle} from "@components/text/page-title";
+import {RegisterCredentials} from "@models/auth";
+import {useDispatcher} from "@hooks/use-dispatcher";
 
 export default function Register() {
     const {register, handleSubmit, formState: {isSubmitting, errors}} = useForm<RegisterCredentials>();

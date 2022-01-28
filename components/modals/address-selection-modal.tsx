@@ -1,9 +1,9 @@
 import {NextPage} from "next";
 import {SimpleModal} from "./simple-modal";
-import {useAddresses} from "../../queries/use-addresses";
 import {AddressList} from "../addresses/address-list";
-import {AddressType} from "../../types/addresses";
 import {Button} from "../button";
+import {useAddresses} from "@queries/use-addresses";
+import {AddressType} from "@models/addresses";
 
 type Props = {
     open: boolean;

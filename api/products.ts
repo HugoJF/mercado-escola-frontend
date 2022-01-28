@@ -1,5 +1,5 @@
-import {PaginatedResourceResponse, ResourceResponse} from "../types/global";
-import {ProductType} from "../types/products";
+import {PaginatedResourceResponse, ResourceResponse} from "../models/global";
+import {ProductType} from "../models/products";
 import {bxios} from "../helpers/bxios";
 
 export const products = {

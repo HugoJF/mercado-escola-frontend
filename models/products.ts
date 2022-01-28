@@ -1,5 +1,5 @@
-import {Pivot, SoftDeletes, Timestamps} from "~/types";
-import {Media} from "@type/media";
+import {Pivot, SoftDeletes, Timestamps} from "@models/global";
+import {Media} from "@models/media";
 
 export type WithMedia = {
     media: Media[];

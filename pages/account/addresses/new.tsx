@@ -1,12 +1,12 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import {Authed} from "../../../components/gates/authed";
-import {AddressAutocomplete} from "../../../components/address-autocomplete";
 import {useEffect} from "react";
-import {useDispatcher} from "../../../hooks/use-dispatcher";
-import {useAddress} from "../../../helpers/selectors";
-import {AddressDetailsModal} from "../../../components/modals/address-details-modal";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Authed} from "@components/gates/authed";
+import {AddressAutocomplete} from "@components/address-autocomplete";
+import {AddressDetailsModal} from "@components/modals/address-details-modal";
+import {useDispatcher} from "@hooks/use-dispatcher";
+import {useAddress} from "@helpers/selectors";
 
 const NewAddress: NextPage = () => {
     const dispatch = useDispatcher();

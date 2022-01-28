@@ -1,14 +1,14 @@
 import {NextPage} from "next";
-import {Authed} from "../../../components/gates/authed";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import {Button} from "../../../components/button";
-import {Empty} from "../../../components/empty";
-import {ListItem} from "../../../components/list-item";
-import {MapPin, MoreVertical} from "react-feather";
-import {ListItemGroup} from "../../../components/list-item-group";
-import {useAddresses} from "../../../queries/use-addresses";
 import Link from "next/link";
+import {MapPin, MoreVertical} from "react-feather";
+import {Authed} from "@components/gates/authed";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Button} from "@components/button";
+import {Empty} from "@components/empty";
+import {ListItem} from "@components/list-item";
+import {ListItemGroup} from "@components/list-item-group";
+import {useAddresses} from "@queries/use-addresses";
 
 const AddressesIndex: NextPage = () => {
     const addresses = useAddresses();

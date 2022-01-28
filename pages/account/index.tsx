@@ -1,12 +1,12 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../components/layouts/with-header";
-import {PageTitle} from "../../components/text/page-title";
-import {ListItemGroup} from "../../components/list-item-group";
-import {ListItem} from "../../components/list-item";
-import {AlertCircle, Book, Flag, Heart, LogOut, Mail, MapPin, Phone, ShoppingCart, User} from "react-feather";
 import Link from "next/link";
-import {useAuth} from "../../helpers/selectors";
-import {Authed} from "../../components/gates/authed";
+import {AlertCircle, Book, Flag, Heart, LogOut, Mail, MapPin, Phone, ShoppingCart, User} from "react-feather";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {ListItemGroup} from "@components/list-item-group";
+import {ListItem} from "@components/list-item";
+import {Authed} from "@components/gates/authed";
+import {useAuth} from "@helpers/selectors";
 
 const AccountIndex: NextPage = () => {
     const auth = useAuth();

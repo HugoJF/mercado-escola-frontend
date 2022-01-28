@@ -1,7 +1,7 @@
 import {bxios} from "../helpers/bxios";
-import {CartType, PivotCartProductsUser} from "../types/cart";
-import {ResourceResponse} from "../types/global";
-import {ProductType} from "../types/products";
+import {CartType, PivotCartProductsUser} from "../models/cart";
+import {ResourceResponse} from "../models/global";
+import {ProductType} from "../models/products";
 
 export const cart = {
     index: () => bxios()

@@ -1,17 +1,15 @@
-
-
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document, {Head, Html, Main, NextScript} from 'next/document'
 
 export default class MyDocument extends Document {
     render() {
         return (
             <Html>
-                <Head />
+                <Head/>
                 <body className="min-h-screen">
-                <Main />
+                <Main/>
                 {/* Here we will mount our modal portal */}
-                <div id="modal" />
-                <NextScript />
+                <div id="modal"/>
+                <NextScript/>
                 </body>
             </Html>
         )

@@ -1,20 +1,20 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import {Authed} from "../../../components/gates/authed";
-import {useEffect} from "react";
-import {useAddress} from "../../../helpers/selectors";
-import {Input} from "../../../components/input";
-import {Select} from "../../../components/select";
-import {Button} from "../../../components/button";
 import {useRouter} from "next/router";
 import dynamic from "next/dynamic";
-import {useGeocode} from "../../../hooks/use-geocode";
-import {useDispatcher} from "../../../hooks/use-dispatcher";
-import {useAddressCreate} from "../../../mutations/use-address-create";
+import {useEffect} from "react";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Authed} from "@components/gates/authed";
+import {Input} from "@components/input";
+import {Select} from "@components/select";
+import {Button} from "@components/button";
+import {useGeocode} from "@hooks/use-geocode";
+import {useDispatcher} from "@hooks/use-dispatcher";
+import {useAddress} from "@helpers/selectors";
+import {useAddressCreate} from "@mutations/use-address-create";
 
 // This dynamic import is required since react-leaflet will crash with 'window is not defined'
-const MapWithPing = dynamic(() => import("../../../components/map-with-ping"), {ssr: false});
+const MapWithPing = dynamic(() => import("@components/map-with-ping"), {ssr: false});
 
 const ConfirmAddress: NextPage = () => {
     const dispatch = useDispatcher();

@@ -1,6 +1,5 @@
 import {google, Loader} from "google-maps";
 
-
 let instance: google | null = null;
 
 export const load = async () => {

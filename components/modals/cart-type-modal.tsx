@@ -1,9 +1,9 @@
 import {NextPage} from "next";
+import {ChangeEventHandler, useEffect, useState} from "react";
 import {SimpleModal} from "./simple-modal";
 import {Button} from "../button";
 import {Toggle} from "../toggle";
 import {ToggleGroup} from "../toggle-group";
-import {ChangeEventHandler, useEffect, useState} from "react";
 
 type Props = {
     selected: boolean;

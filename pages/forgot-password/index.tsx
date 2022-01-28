@@ -1,10 +1,10 @@
-import {CompactCentered} from "../../components/layouts/compact-centered";
-import {PageTitle} from "../../components/text/page-title";
-import {useForm} from "react-hook-form";
-import {useDispatcher} from "../../hooks/use-dispatcher";
 import {useRouter} from "next/router";
-import {Input} from "../../components/input";
-import {Button} from "../../components/button";
+import {useForm} from "react-hook-form";
+import {CompactCentered} from "@components/layouts/compact-centered";
+import {PageTitle} from "@components/text/page-title";
+import {Input} from "@components/input";
+import {Button} from "@components/button";
+import {useDispatcher} from "@hooks/use-dispatcher";
 
 type Form = {
     email: string;

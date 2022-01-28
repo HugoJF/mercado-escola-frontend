@@ -1,12 +1,12 @@
 import {NextPage} from "next";
-import {WithHeader} from "../../../components/layouts/with-header";
-import {PageTitle} from "../../../components/text/page-title";
-import Dropzone from "../../../components/dropzone";
-import {Input} from "../../../components/input";
-import {ToggleGroup} from "../../../components/toggle-group";
-import {Toggle} from "../../../components/toggle";
-import {Button} from "../../../components/button";
-import {Textarea} from "../../../components/textarea";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {Dropzone} from "@components/dropzone";
+import {Input} from "@components/input";
+import {ToggleGroup} from "@components/toggle-group";
+import {Toggle} from "@components/toggle";
+import {Button} from "@components/button";
+import {Textarea} from "@components/textarea";
 
 const AdminProductsCreate: NextPage = () => {
     return <WithHeader className="grid">

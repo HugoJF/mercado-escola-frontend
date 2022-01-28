@@ -1,7 +1,7 @@
 import {OpeningType} from "./openings";
 import {AddressType} from "./addresses";
 import {ProductType} from "./products";
-import {Pivot} from "~/types";
+import {Pivot} from "@models/global";
 
 export type PivotCartProductsUser = Pivot<{
     holder_id: number;

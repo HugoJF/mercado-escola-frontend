@@ -1,8 +1,9 @@
 import {createModel} from "@rematch/core";
 import {RootModel} from "./index";
-import {AuthState, LoginCredentials, RegisterCredentials} from "../types/auth";
-import {UserProperties} from "../types/users";
+import {AuthState, LoginCredentials, RegisterCredentials} from "@models/auth";
+import {UserProperties} from "@models/users";
 
+// TODO move to models
 export type PasswordResetParameters = {
     email: string,
     password: string,

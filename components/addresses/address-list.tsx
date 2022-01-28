@@ -2,7 +2,7 @@ import {FC} from "react";
 import {ListItem} from "../list-item";
 import {Icon, MapPin, MoreVertical} from "react-feather";
 import {ListItemGroup} from "../list-item-group";
-import {AddressType} from "../../types/addresses";
+import {AddressType} from "../../models/addresses";
 
 type Props = {
     addresses: AddressType[];

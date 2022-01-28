@@ -1,6 +1,6 @@
-import {Pivot, Timestamps} from "~/types";
 import {ProductType} from "./products";
 import {OrderType} from "./orders";
+import {Pivot, Timestamps} from "@models/global";
 
 export type OpeningWithProducts = { products: ProductType<PivotOpeningProduct>[] };
 export type PivotOpeningProduct = Pivot<{

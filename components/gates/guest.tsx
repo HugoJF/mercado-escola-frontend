@@ -1,6 +1,6 @@
 import {FC, useEffect} from "react";
-import {useAuth} from "../../helpers/selectors";
 import {useRouter} from "next/router";
+import {useAuth} from "@helpers/selectors";
 
 export const Guest: FC = ({children}) => {
     const auth = useAuth();

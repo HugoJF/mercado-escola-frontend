@@ -1,9 +1,9 @@
 import {NextPage} from "next";
-import {ChevronRight} from "react-feather";
 import Link from "next/link";
 import {useRouter} from "next/router";
 import {ReactNode} from "react";
-import {Breadcrumbs} from "../types/breadcrumbs";
+import {ChevronRight} from "react-feather";
+import {Breadcrumbs} from "@models/breadcrumbs";
 
 const bc: Breadcrumbs = {
     '/': {title: 'Início'},
@@ -17,6 +17,7 @@ const bc: Breadcrumbs = {
     '/account/addresses/confirm': {title: 'Confirmando endereço', root: '/account/addresses'},
     '/admin/products': {title: 'Produtos', root: '/admin'},
     '/admin/products/create': {title: 'Registrando novo produto', root: '/admin/products'},
+    '/admin/users': {title: 'Usuários', root: '/admin'},
 }
 
 export const Breadcrumb: NextPage = () => {

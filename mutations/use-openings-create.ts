@@ -1,5 +1,5 @@
 import {useMutation, useQueryClient} from "react-query";
-import {OpeningProperties} from "../types/openings";
+import {OpeningProperties} from "@models/openings";
 import {api} from "../api";
 
 export function useOpeningsCreate() {

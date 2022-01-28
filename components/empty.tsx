@@ -1,7 +1,5 @@
 import {FC} from "react";
-import {Archive, MapPin} from "react-feather";
-import {ListItemGroup} from "./list-item-group";
-import {ListItem} from "./list-item";
+import {Archive} from "react-feather";
 
 type Props = {
     title: string;

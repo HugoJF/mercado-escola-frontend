@@ -1,9 +1,9 @@
 import {NextPage} from "next";
+import Link from "next/link";
 import {SimpleModal} from "./simple-modal";
 import {Input} from "../input";
 import {Button} from "../button";
-import Link from "next/link";
-import {useDispatcher} from "../../hooks/use-dispatcher";
+import {useDispatcher} from "@hooks/use-dispatcher";
 
 type Props = {
     address: string;

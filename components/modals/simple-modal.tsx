@@ -1,7 +1,7 @@
 import {NextPage} from "next";
+import {ReactNode} from "react";
 import clsx from "clsx";
 import {Portal} from "../portal";
-import {ReactNode} from "react";
 
 type Props = {
     open: boolean;
