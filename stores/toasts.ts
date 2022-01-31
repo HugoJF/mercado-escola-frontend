@@ -11,7 +11,7 @@ export type ToastsState = {
 const defaults: ToastType = {
     title: '',
     duration: 5000,
-    type: ToastTypes.SUCCESS,
+    type: ToastTypes.DEFAULT,
 };
 
 export const toasts = createModel<RootModel>()({
