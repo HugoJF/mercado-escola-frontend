@@ -76,9 +76,11 @@ export const Header: NextPage = () => {
                 {!menuOpen && <Menu/>}
                 {menuOpen && <X/>}
             </IconContainer>
-            <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-50 tracking-tighter cursor-pointer whitespace-nowrap">
-                Mercado Escola
-            </h3>
+            <Link href="/">
+                <h3 className="hidden md:flex items-center duration-150 px-6 text-xl font-bold hover:bg-gray-50 tracking-tighter cursor-pointer whitespace-nowrap">
+                    Mercado Escola
+                </h3>
+            </Link>
             <div className="hidden md:flex items-stretch flex-grow py-3 px-6">
                 <div className="flex items-stretch w-full relative">
                     <Search className="absolute ml-4 left-0 top-1/2 -translate-y-1/2 pointer-events-none"/>
@@ -115,15 +117,5 @@ export const Header: NextPage = () => {
                 </div>
             </Link>)}
         </div>}
-        {/* TODO toggle this bar */}
-        {!menuOpen && <Link href="/cart">
-            <div className="flex px-6 py-3 bg-red-500 text-white cursor-pointer">
-                <ShoppingCart/>
-                {/* TODO link */}
-                <span className="flex-grow text-center">Ver carrinho</span>
-                {/* TODO price */}
-                <span>R$ 3,00</span>
-            </div>
-        </Link>}
     </header>;
 };

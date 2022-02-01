@@ -1,19 +1,29 @@
 import {NextPage} from "next";
-import {useRouter} from "next/router";
-import {useEffect} from "react";
-import {useAuth} from "@helpers/selectors";
+import Link from "next/link";
+import {WithHeader} from "@components/layouts/with-header";
+import {PageTitle} from "@components/text/page-title";
+import {useCurrentOpening} from "@queries/use-current-opening";
+import {ProductCard} from "@components/product-card";
+import {ProductDeck} from "@components/product-deck";
 
 const Index: NextPage = () => {
-    const auth = useAuth();
-    const router = useRouter();
+    const opening = useCurrentOpening();
 
-    useEffect(() => {
-        if (auth.me) {
-            router.push('/admin'); // TODO should be /
-        } else {
-            router.push('login');
-        }
-    })
-    return <></> // TODO: render something
+    return <WithHeader>
+        <PageTitle>Produtos</PageTitle>
+
+        <ProductDeck>
+            {opening.data?.data.data.products.map(product => (
+                <Link href={`products/${product.id}`}>
+                    <ProductCard
+                        name={product.name}
+                        price={product.quantity_cost}
+                        unit={product.unit_name_singular}
+                        mediaUrl={Object.values(product.media_links)?.[0]}
+                    />
+                </Link>
+            ))}
+        </ProductDeck>
+    </WithHeader>
 }
 export default Index
