@@ -4,13 +4,14 @@ import {Breadcrumb} from "../breadcrumb";
 import clsx from "clsx";
 import {NotificationBox} from "@components/notification-box";
 import {CartBar} from "@components/cart-bar";
+import {Authed} from "@components/gates/authed";
 
 type Props = {
     className?: string;
 }
 
-export const WithHeader: NextPage<Props> = ({className, children}) => {
-    return (<>
+export const UserLayout: NextPage<Props> = ({className, children}) => {
+    return (<Authed>
             <Header/>
             <CartBar/>
             <Breadcrumb/>
@@ -18,6 +19,6 @@ export const WithHeader: NextPage<Props> = ({className, children}) => {
                 <NotificationBox/>
                 {children}
             </main>
-        </>
+        </Authed>
     );
 };

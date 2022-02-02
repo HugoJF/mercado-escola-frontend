@@ -1,11 +1,11 @@
 import {NextPage} from "next";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Input} from "@components/input";
 import {Button} from "@components/button";
 
 const AdminProductsCreate: NextPage = () => {
-    return <WithHeader className="grid">
+    return <UserLayout className="grid">
         <PageTitle>Registro de produto</PageTitle>
 
         <div className="grid grid-cols-3 gap-6">
@@ -19,6 +19,6 @@ const AdminProductsCreate: NextPage = () => {
         </div>
         <Input placeholder="Taxa de entrega"/>
         <Button color="primary">Salvar</Button>
-    </WithHeader>
+    </UserLayout>
 }
 export default AdminProductsCreate

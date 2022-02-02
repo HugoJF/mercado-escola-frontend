@@ -1,6 +1,6 @@
 import {NextPage} from "next";
 import Link from "next/link";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {useCurrentOpening} from "@queries/use-current-opening";
 import {ProductCard} from "@components/product-card";
@@ -9,7 +9,7 @@ import {ProductDeck} from "@components/product-deck";
 const Index: NextPage = () => {
     const opening = useCurrentOpening();
 
-    return <WithHeader>
+    return <UserLayout>
         <PageTitle>Produtos</PageTitle>
 
         <ProductDeck>
@@ -24,6 +24,6 @@ const Index: NextPage = () => {
                 </Link>
             ))}
         </ProductDeck>
-    </WithHeader>
+    </UserLayout>
 }
 export default Index

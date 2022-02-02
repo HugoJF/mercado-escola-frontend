@@ -1,5 +1,5 @@
 import {NextPage} from "next";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Table} from "@components/table/table";
 import {Thead} from "@components/table/thead";
@@ -12,7 +12,6 @@ import {Select} from "@components/select";
 import {useUsers} from "@queries/use-users";
 import {useUserUpdate} from "@mutations/use-user-update";
 import {UserType} from "@models/users";
-import {Authed} from "@components/gates/authed";
 
 const UsersIndex: NextPage = () => {
     const users = useUsers();
@@ -25,7 +24,7 @@ const UsersIndex: NextPage = () => {
         await users.refetch()
     }
 
-    return <Authed><WithHeader>
+    return <UserLayout>
         <PageTitle>Usuários registrados</PageTitle>
         <Table>
             <Thead>
@@ -61,6 +60,6 @@ const UsersIndex: NextPage = () => {
                 ))}
             </Tbody>
         </Table>
-    </WithHeader></Authed>
+    </UserLayout>
 }
 export default UsersIndex

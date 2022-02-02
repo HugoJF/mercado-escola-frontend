@@ -5,8 +5,7 @@ import {useForm} from "react-hook-form";
 import {Button} from "@components/button";
 import {PageTitle} from "@components/text/page-title";
 import {Input} from "@components/input";
-import {WithHeader} from "@components/layouts/with-header";
-import {Authed} from "@components/gates/authed";
+import {UserLayout} from "@components/layouts/user-layout";
 import {useAuth} from "@helpers/selectors";
 
 // TODO: move to /types
@@ -33,7 +32,7 @@ export default function UpdatePhone() {
         await router.push('/account');
     }
 
-    return <Authed><WithHeader>
+    return <UserLayout>
         <PageTitle
             description="Esse número será utilizado apenas para confirmar seu pedido e em caso de problemas"
         >
@@ -45,5 +44,5 @@ export default function UpdatePhone() {
 
             <Button loading={isSubmitting} color="primary">Salvar</Button>
         </form>
-    </WithHeader></Authed>
+    </UserLayout>
 }

@@ -1,6 +1,6 @@
 import {NextPage} from "next";
 import Link from "next/link";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Button} from "@components/button";
 import {ListItem} from "@components/list-item";
@@ -11,7 +11,7 @@ import {useOpenings} from "@queries/use-openings";
 const OpeningsIndex: NextPage = () => {
     const openings = useOpenings();
 
-    return <WithHeader>
+    return <UserLayout>
         <PageTitle>Aberturas</PageTitle>
         <div className="w-full flex justify-between gap-6">
             <Select>
@@ -29,6 +29,6 @@ const OpeningsIndex: NextPage = () => {
                 />
             ))}
         </ListItemGroup>
-    </WithHeader>
+    </UserLayout>
 }
 export default OpeningsIndex

@@ -1,6 +1,6 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {useProduct} from "@queries/use-product";
 import {PageTitle} from "@components/text/page-title";
 import {Button} from "@components/button";
@@ -20,7 +20,7 @@ const ProductShow: NextPage = () => {
         return cart.data?.data.products.map(product => product.id).includes(product.data?.data.data.id!);
     }, [cart])
 
-    return <WithHeader className="grid">
+    return <UserLayout className="grid">
         {product.data?.data.data && <AddToCartModal
             product={product.data?.data.data}
             open={modalOpen}
@@ -50,6 +50,6 @@ const ProductShow: NextPage = () => {
         <Button color="primary" onClick={() => setModalOpen(true)}>
             {inCart ? 'Modificar' : 'Adicionar ao carrinho'}
         </Button>
-    </WithHeader>
+    </UserLayout>
 }
 export default ProductShow

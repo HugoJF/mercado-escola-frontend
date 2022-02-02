@@ -1,17 +1,16 @@
 import {NextPage} from "next";
 import Link from "next/link";
 import {AlertCircle, Book, Flag, Heart, LogOut, Mail, MapPin, Phone, ShoppingCart, User} from "react-feather";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {ListItemGroup} from "@components/list-item-group";
 import {ListItem} from "@components/list-item";
-import {Authed} from "@components/gates/authed";
 import {useAuth} from "@helpers/selectors";
 
 const AccountIndex: NextPage = () => {
     const auth = useAuth();
 
-    return <Authed><WithHeader>
+    return <UserLayout>
         <PageTitle>Minha conta</PageTitle>
         <ListItemGroup>
             <ListItem leftIcon={User} title="Nome" description={auth?.me?.name} rightIcon={null}/>
@@ -35,6 +34,6 @@ const AccountIndex: NextPage = () => {
                 <ListItem leftIcon={LogOut} title="Sair"/>
             </Link>
         </ListItemGroup>
-    </WithHeader></Authed>
+    </UserLayout>
 }
 export default AccountIndex

@@ -1,8 +1,7 @@
 import {NextPage} from "next";
 import {useEffect} from "react";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
-import {Authed} from "@components/gates/authed";
 import {AddressAutocomplete} from "@components/address-autocomplete";
 import {AddressDetailsModal} from "@components/modals/address-details-modal";
 import {useDispatcher} from "@hooks/use-dispatcher";
@@ -20,7 +19,7 @@ const NewAddress: NextPage = () => {
         dispatch.address.setAddress(address);
     }
 
-    return <Authed><WithHeader>
+    return <UserLayout>
         <AddressDetailsModal
             address={address.address ?? ''}
             open={Boolean(address.address)}
@@ -34,6 +33,6 @@ const NewAddress: NextPage = () => {
         />
 
         {address && <></>}
-    </WithHeader></Authed>
+    </UserLayout>
 }
 export default NewAddress

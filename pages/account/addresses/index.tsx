@@ -1,8 +1,7 @@
 import {NextPage} from "next";
 import Link from "next/link";
 import {MapPin, MoreVertical} from "react-feather";
-import {Authed} from "@components/gates/authed";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Button} from "@components/button";
 import {Empty} from "@components/empty";
@@ -13,7 +12,7 @@ import {useAddresses} from "@queries/use-addresses";
 const AddressesIndex: NextPage = () => {
     const addresses = useAddresses();
 
-    return <Authed><WithHeader className="grid">
+    return <UserLayout className="grid">
         <div className="flex justify-between">
             <PageTitle>Endereços</PageTitle>
             <Link href="/account/addresses/new">
@@ -37,6 +36,6 @@ const AddressesIndex: NextPage = () => {
             title="Nenhum endereço"
             description="Você ainda não cadastrou um endereço de entrega!"
         />}
-    </WithHeader></Authed>
+    </UserLayout>
 }
 export default AddressesIndex

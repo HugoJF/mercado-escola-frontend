@@ -1,8 +1,7 @@
 import {useRouter} from "next/router";
 import {useEffect} from "react";
 import {Loader} from "react-feather";
-import {WithHeader} from "@components/layouts/with-header";
-import {Authed} from "@components/gates/authed";
+import {UserLayout} from "@components/layouts/user-layout";
 import {useDispatcher} from "@hooks/use-dispatcher";
 
 export default function Login() {
@@ -23,7 +22,7 @@ export default function Login() {
         }
     }
 
-    return <Authed><WithHeader className="flex justify-center">
+    return <UserLayout className="flex justify-center">
         <Loader className="animate-spin"/>
-    </WithHeader></Authed>
+    </UserLayout>
 }

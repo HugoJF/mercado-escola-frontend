@@ -1,5 +1,5 @@
 import {NextPage} from "next";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Dropzone} from "@components/dropzone";
 import {Input} from "@components/input";
@@ -9,7 +9,7 @@ import {Button} from "@components/button";
 import {Textarea} from "@components/textarea";
 
 const AdminProductsCreate: NextPage = () => {
-    return <WithHeader className="grid">
+    return <UserLayout className="grid">
         <PageTitle>Registro de produto</PageTitle>
 
         <Dropzone/>
@@ -25,6 +25,6 @@ const AdminProductsCreate: NextPage = () => {
             <Input placeholder="Preço da unidade (R$)"/>
         </div>
         <Button color="primary">Salvar</Button>
-    </WithHeader>
+    </UserLayout>
 }
 export default AdminProductsCreate

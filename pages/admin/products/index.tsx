@@ -1,5 +1,5 @@
 import {NextPage} from "next";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Input} from "@components/input";
 import {Button} from "@components/button";
@@ -16,7 +16,7 @@ const ProductsIndex: NextPage = () => {
         return products.data?.data.data.filter(product => product.name.toLowerCase().includes(filter.toLowerCase()));
     }, [filter, products]);
 
-    return <WithHeader>
+    return <UserLayout>
         <PageTitle>Lista de produtos</PageTitle>
         <div className="w-full flex gap-6">
             <Input
@@ -38,6 +38,6 @@ const ProductsIndex: NextPage = () => {
                 />
             ))}
         </ListItemGroup>
-    </WithHeader>
+    </UserLayout>
 }
 export default ProductsIndex

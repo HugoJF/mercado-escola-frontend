@@ -4,7 +4,7 @@ import {ShoppingBag, ShoppingCart, User, Users} from "react-feather";
 import {PageTitle} from "@components/text/page-title";
 import {LinkGroup} from "@components/link-group";
 import {LinkGroupItem} from "@components/link-group-item";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {Admin} from "@components/gates/admin";
 
 const menu = [{
@@ -38,7 +38,7 @@ const menu = [{
 }];
 
 const Home: NextPage = () => {
-    return <Admin><WithHeader>
+    return <Admin><UserLayout>
         <PageTitle>Administrativo</PageTitle>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -52,6 +52,6 @@ const Home: NextPage = () => {
                 </LinkGroup>
             ))}
         </div>
-    </WithHeader></Admin>
+    </UserLayout></Admin>
 }
 export default Home;

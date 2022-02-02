@@ -2,9 +2,8 @@ import {NextPage} from "next";
 import {useRouter} from "next/router";
 import dynamic from "next/dynamic";
 import {useEffect} from "react";
-import {WithHeader} from "@components/layouts/with-header";
+import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
-import {Authed} from "@components/gates/authed";
 import {Input} from "@components/input";
 import {Select} from "@components/select";
 import {Button} from "@components/button";
@@ -51,7 +50,7 @@ const ConfirmAddress: NextPage = () => {
         await router.push('/account/addresses');
     }
 
-    return <Authed><WithHeader>
+    return <UserLayout>
         <PageTitle>Dados do endereço</PageTitle>
 
         <div className="grid grid-cols-2 gap-6">
@@ -86,6 +85,6 @@ const ConfirmAddress: NextPage = () => {
         </div>
 
         {address && <></>}
-    </WithHeader></Authed>
+    </UserLayout>
 }
 export default ConfirmAddress
