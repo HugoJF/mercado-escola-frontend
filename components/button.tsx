@@ -27,7 +27,7 @@ export const Button = forwardRef<HTMLButtonElement, PropsWithChildren<Props>>(
      }, ref) => {
         return <button
             ref={ref}
-            className={clsx('text-center duration-150 px-12 py-4 rounded', classMap[color], className, {
+            className={clsx('text-center duration-150 px-8 py-4 rounded', classMap[color], className, {
                 'opacity-50 cursor-not-allowed': loading,
             })}
             {...rest}

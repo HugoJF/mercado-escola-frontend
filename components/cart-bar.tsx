@@ -2,6 +2,7 @@ import {FC} from "react";
 import Link from "next/link";
 import {ShoppingCart} from "react-feather";
 import {useCart} from "@queries/use-cart";
+import {PriceFormatter} from "@components/ui/price-formatter";
 
 export const CartBar: FC = () => {
     const cart = useCart();
@@ -15,7 +16,9 @@ export const CartBar: FC = () => {
             <ShoppingCart/>
             <span className="flex-grow text-center">Ver carrinho</span>
             {/* TODO price */}
-            <span>R$ 3,00</span>
+            <span>
+                <PriceFormatter price={cart.data.data.cost}/>
+            </span>
         </div>
     </Link>
 }
