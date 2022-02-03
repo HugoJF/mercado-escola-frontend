@@ -12,9 +12,11 @@ import {AddressType} from "@models/addresses";
 import {useCart} from "@queries/use-cart";
 import {PriceFormatter} from "@components/ui/price-formatter";
 import {useCartAddress} from "@mutations/use-cart-address";
+import {useCurrentOpening} from "@queries/use-current-opening";
 
 const CartIndex: NextPage = () => {
     const cart = useCart();
+    const opening = useCurrentOpening();
     const cartAddress = useCartAddress();
     const [cartTypeModal, setCartTypeModal] = useState(false);
     const [addressModal, setAddressModal] = useState(false);
@@ -89,6 +91,13 @@ const CartIndex: NextPage = () => {
                 </Link>
             ))}
         </ul>
+        
+        {opening.data?.data.data.delivery_fee && <div className="flex justify-between">
+            <span>Taxa de entrega</span>
+            <span className="text-orange-500">
+                <PriceFormatter price={opening.data?.data.data.delivery_fee}/>
+            </span>
+        </div>}
 
         <div className="flex justify-between">
             <span>Valor total</span>
