@@ -11,26 +11,23 @@ import {AddressSelectionModal} from "@components/modals/address-selection-modal"
 import {AddressType} from "@models/addresses";
 import {useCart} from "@queries/use-cart";
 import {PriceFormatter} from "@components/ui/price-formatter";
+import {useCartAddress} from "@mutations/use-cart-address";
 
-// TODO: address selection and cancelation needs work
 const CartIndex: NextPage = () => {
     const cart = useCart();
+    const cartAddress = useCartAddress();
     const [cartTypeModal, setCartTypeModal] = useState(false);
     const [addressModal, setAddressModal] = useState(false);
-    const [delivery, setDelivery] = useState(false);
-    const [address, setAddress] = useState<AddressType | null>(null);
 
-    function handleCartTypeClose() {
+    const address = cart.data?.data.address;
+
+    function handleCartTypeClose(delivery: boolean) {
         setCartTypeModal(false);
-        if (!delivery) {
-            return
-        }
 
-        if (!address) {
+        if (delivery) {
             setAddressModal(true);
         } else {
-            setAddress(null);
-            setDelivery(false);
+            cartAddress.mutateAsync(null)
         }
     }
 
@@ -39,15 +36,14 @@ const CartIndex: NextPage = () => {
     }
 
     function handleAddressSelection(address: AddressType) {
-        setAddress(address);
+        cartAddress.mutateAsync(address.id);
     }
 
     return <UserLayout className="grid">
         <CartTypeModal
-            selected={delivery}
+            selected={!!address}
             open={cartTypeModal}
             onClose={handleCartTypeClose}
-            onDeliverySelected={setDelivery}
         />
 
         <AddressSelectionModal
@@ -68,7 +64,7 @@ const CartIndex: NextPage = () => {
                         <img
                             alt={product.name}
                             src={Object.values(product.media_links)?.[0]}
-                            className="h-24 h-full aspect-square rounded"
+                            className="h-24  aspect-square rounded"
                         />
 
                         {/* Product details */}
@@ -76,8 +72,8 @@ const CartIndex: NextPage = () => {
                             <h2>{product.name}</h2>
                             <span className="text-gray-500">
                                 {product.pivot.quantity}
-                                    {' '}
-                                    {product.pivot.quantity === 1 ? product.unit_name_singular : product.unit_name_plural}
+                                {' '}
+                                {product.pivot.quantity === 1 ? product.unit_name_singular : product.unit_name_plural}
                             </span>
                             <span className="text-orange-500">
                                 <PriceFormatter price={product.pivot.quantity_cost * product.pivot.quantity}/>
@@ -111,11 +107,11 @@ const CartIndex: NextPage = () => {
         <div className="flex" onClick={() => setCartTypeModal(true)}>
             <ShoppingBag className="mr-6 text-gray-500"/>
             <p className="text-gray-500">
-                {delivery ? 'Entregar no endereço' : 'Retirar pessoalmente'}
+                {address ? 'Entregar no endereço' : 'Retirar pessoalmente'}
             </p>
         </div>
 
-        {delivery && address && <>
+        {address && <>
             <SectionTitle>Endereço da entrega</SectionTitle>
             <div className="flex">
                 <MapPin className="mr-6 text-gray-500"/>

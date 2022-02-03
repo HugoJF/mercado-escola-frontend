@@ -8,8 +8,8 @@ import {ToggleGroup} from "../toggle-group";
 type Props = {
     selected: boolean;
     open: boolean;
-    onClose: () => void;
-    onDeliverySelected: (delivery: boolean) => void;
+    onClose: (delivery: boolean) => void;
+    onDeliverySelected?: (delivery: boolean) => void; // TODO this may be useless
 }
 export const CartTypeModal: NextPage<Props> = ({selected, open, onClose, onDeliverySelected}) => {
     const [delivery, setDelivery] = useState(selected);
@@ -22,12 +22,18 @@ export const CartTypeModal: NextPage<Props> = ({selected, open, onClose, onDeliv
         const flag = e.target.value === 'delivery';
 
         setDelivery(flag)
-        onDeliverySelected(flag);
+        if (onDeliverySelected) {
+            onDeliverySelected(flag);
+        }
+    }
+
+    function handleOnClose() {
+        onClose(delivery);
     }
 
     return <SimpleModal
         open={open}
-        onClose={onClose}
+        onClose={handleOnClose}
         title="Selecione uma opção"
         description="O pedido pode ser entregue ou retirado"
     >
@@ -55,7 +61,7 @@ export const CartTypeModal: NextPage<Props> = ({selected, open, onClose, onDeliv
             </ToggleGroup>
 
             <div className="grid">
-                <Button color="primary" onClick={() => onClose()}>Atualizar</Button>
+                <Button color="primary" onClick={handleOnClose}>Atualizar</Button>
             </div>
         </div>
     </SimpleModal>
