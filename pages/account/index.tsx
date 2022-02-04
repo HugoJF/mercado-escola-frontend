@@ -26,8 +26,12 @@ const AccountIndex: NextPage = () => {
         <PageTitle>Mais</PageTitle>
         <ListItemGroup>
             <ListItem leftIcon={AlertCircle} title="Avisos"/>
-            <ListItem leftIcon={ShoppingCart} title="Carrinho"/>
-            <ListItem leftIcon={Book} title="Pedidos"/>
+            <Link href="/cart">
+                <ListItem leftIcon={ShoppingCart} title="Carrinho"/>
+            </Link>
+            <Link href="/orders">
+                <ListItem leftIcon={Book} title="Pedidos"/>
+            </Link>
             <ListItem leftIcon={Heart} title="Favoritos"/>
             <ListItem leftIcon={Flag} title="Ajuda"/>
             <Link href="/logout">

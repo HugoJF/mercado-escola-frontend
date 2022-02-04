@@ -13,11 +13,15 @@ import {useCart} from "@queries/use-cart";
 import {PriceFormatter} from "@components/ui/price-formatter";
 import {useCartAddress} from "@mutations/use-cart-address";
 import {useCurrentOpening} from "@queries/use-current-opening";
+import {useOrderStore} from "@mutations/use-order-store";
+import {useRouter} from "next/router";
 
 const CartIndex: NextPage = () => {
+    const router = useRouter();
     const cart = useCart();
     const opening = useCurrentOpening();
     const cartAddress = useCartAddress();
+    const orderStore = useOrderStore();
     const [cartTypeModal, setCartTypeModal] = useState(false);
     const [addressModal, setAddressModal] = useState(false);
 
@@ -39,6 +43,11 @@ const CartIndex: NextPage = () => {
 
     function handleAddressSelection(address: AddressType) {
         cartAddress.mutateAsync(address.id);
+    }
+
+    async function handleOrderStore() {
+        const response = await orderStore.mutateAsync();
+        await router.push(`/orders/${response.data.data.id}/success`);
     }
 
     return <UserLayout className="grid">
@@ -91,7 +100,7 @@ const CartIndex: NextPage = () => {
                 </Link>
             ))}
         </ul>
-        
+
         {opening.data?.data.data.delivery_fee && <div className="flex justify-between">
             <span>Taxa de entrega</span>
             <span className="text-orange-500">
@@ -142,7 +151,9 @@ const CartIndex: NextPage = () => {
         </div>
 
         {/* TODO call API */}
-        <Button color="primary">Finalizar pedido</Button>
+        <Button loading={orderStore.isLoading} color="primary" onClick={handleOrderStore}>
+            Finalizar pedido
+        </Button>
     </UserLayout>
 }
 export default CartIndex

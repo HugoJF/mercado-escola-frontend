@@ -29,7 +29,7 @@ const desktopMenu: { icon: Icon, href: string, display: 'mobile' | 'desktop' }[]
     display: 'desktop',
 }, {
     icon: ShoppingCart,
-    href: '/orders',
+    href: '/cart',
     display: 'desktop',
 }, {
     icon: Settings,
@@ -47,7 +47,7 @@ const mobileMenu: { icon: Icon, label: string, href: string }[] = [{
     label: 'Favoritos',
 }, {
     icon: ShoppingCart,
-    href: '/orders',
+    href: '/cart',
     label: 'Pedidos',
 }, {
     icon: Settings,
