@@ -15,25 +15,40 @@ import {useCartAddress} from "@mutations/use-cart-address";
 import {useCurrentOpening} from "@queries/use-current-opening";
 import {useOrderStore} from "@mutations/use-order-store";
 import {useRouter} from "next/router";
+import {OpeningType} from "@models/openings";
+import {CartType} from "@models/cart";
 
-const CartIndex: NextPage = () => {
-    const router = useRouter();
+type Props = {
+    opening: OpeningType;
+    cart: CartType;
+}
+
+export default () => {
     const cart = useCart();
     const opening = useCurrentOpening();
+
+    return <UserLayout>
+        {opening.data?.data.data && cart.data?.data && <CartIndex
+            opening={opening.data?.data.data}
+            cart={cart.data?.data}
+        />}
+    </UserLayout>
+}
+
+const CartIndex: NextPage<Props> = ({opening, cart}) => {
+    const router = useRouter();
     const cartAddress = useCartAddress();
     const orderStore = useOrderStore();
     const [cartTypeModal, setCartTypeModal] = useState(false);
     const [addressModal, setAddressModal] = useState(false);
 
-    const address = cart.data?.data.address;
-
-    function handleCartTypeClose(delivery: boolean) {
+    async function handleCartTypeClose(delivery: boolean) {
         setCartTypeModal(false);
 
         if (delivery) {
             setAddressModal(true);
         } else {
-            cartAddress.mutateAsync(null)
+            await cartAddress.mutateAsync(null)
         }
     }
 
@@ -41,8 +56,8 @@ const CartIndex: NextPage = () => {
         setAddressModal(false);
     }
 
-    function handleAddressSelection(address: AddressType) {
-        cartAddress.mutateAsync(address.id);
+    async function handleAddressSelection(address: AddressType) {
+        await cartAddress.mutateAsync(address.id);
     }
 
     async function handleOrderStore() {
@@ -52,7 +67,7 @@ const CartIndex: NextPage = () => {
 
     return <UserLayout className="grid">
         <CartTypeModal
-            selected={!!address}
+            selected={!!cart.address}
             open={cartTypeModal}
             onClose={handleCartTypeClose}
         />
@@ -67,7 +82,7 @@ const CartIndex: NextPage = () => {
 
         {/* TODO: pull items from API */}
         <ul className="flex flex-col gap-6">
-            {cart.data?.data.products.map(product => (
+            {cart.products.map(product => (
                 <Link href={`/products/${product.id}`}>
 
                     <li className="flex gap-6">
@@ -101,17 +116,17 @@ const CartIndex: NextPage = () => {
             ))}
         </ul>
 
-        {opening.data?.data.data.delivery_fee && <div className="flex justify-between">
+        {opening.delivery_fee && <div className="flex justify-between">
             <span>Taxa de entrega</span>
             <span className="text-orange-500">
-                <PriceFormatter price={opening.data?.data.data.delivery_fee}/>
+                <PriceFormatter price={opening.delivery_fee}/>
             </span>
         </div>}
 
         <div className="flex justify-between">
             <span>Valor total</span>
             <span className="text-orange-500">
-                <PriceFormatter price={cart.data?.data.cost ?? 0}/>
+                <PriceFormatter price={cart.cost ?? 0}/>
             </span>
         </div>
 
@@ -125,16 +140,16 @@ const CartIndex: NextPage = () => {
         <div className="flex" onClick={() => setCartTypeModal(true)}>
             <ShoppingBag className="mr-6 text-gray-500"/>
             <p className="text-gray-500">
-                {address ? 'Entregar no endereço' : 'Retirar pessoalmente'}
+                {cart.address ? 'Entregar no endereço' : 'Retirar pessoalmente'}
             </p>
         </div>
 
-        {address && <>
+        {cart.address && <>
             <SectionTitle>Endereço da entrega</SectionTitle>
             <div className="flex">
                 <MapPin className="mr-6 text-gray-500"/>
                 <p className="text-gray-500">
-                    {address.address}
+                    {cart.address.address}
                 </p>
             </div>
         </>}
@@ -156,4 +171,3 @@ const CartIndex: NextPage = () => {
         </Button>
     </UserLayout>
 }
-export default CartIndex

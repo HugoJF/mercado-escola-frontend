@@ -8,11 +8,21 @@ import {Empty} from "@components/empty";
 import {ListItem} from "@components/list-item";
 import {ListItemGroup} from "@components/list-item-group";
 import {useAddresses} from "@queries/use-addresses";
+import {AddressType} from "@models/addresses";
 
-const AddressesIndex: NextPage = () => {
+type Props = {
+    addresses: AddressType[];
+}
+export default () => {
     const addresses = useAddresses();
 
     return <UserLayout className="grid">
+        {addresses.data?.data && <AddressesIndex addresses={addresses.data?.data}/>}
+    </UserLayout>
+}
+
+const AddressesIndex: NextPage<Props> = ({addresses}) => {
+    return <>
         <div className="flex justify-between">
             <PageTitle>Endereços</PageTitle>
             <Link href="/account/addresses/new">
@@ -21,8 +31,8 @@ const AddressesIndex: NextPage = () => {
         </div>
 
         {/* Update title to name and description to address */}
-        {!addresses.isLoading && <ListItemGroup>
-            {addresses.data?.data && addresses.data.data.map(address => (
+        <ListItemGroup>
+            {addresses.map(address => (
                 <ListItem
                     leftIcon={MapPin}
                     rightIcon={MoreVertical}
@@ -30,12 +40,11 @@ const AddressesIndex: NextPage = () => {
                     description={[address.number, address.complement].filter(Boolean).join(', ')}
                 />
             ))}
-        </ListItemGroup>}
+        </ListItemGroup>
 
-        {!addresses.isLoading && !addresses.data?.data?.length && <Empty
+        {!addresses.length && <Empty
             title="Nenhum endereço"
             description="Você ainda não cadastrou um endereço de entrega!"
         />}
-    </UserLayout>
+    </>
 }
-export default AddressesIndex

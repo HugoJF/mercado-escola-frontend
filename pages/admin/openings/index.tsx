@@ -7,11 +7,21 @@ import {ListItem} from "@components/list-item";
 import {ListItemGroup} from "@components/list-item-group";
 import {Select} from "@components/select";
 import {useOpenings} from "@queries/use-openings";
+import {OpeningType} from "@models/openings";
 
-const OpeningsIndex: NextPage = () => {
+type Props = {
+    openings: OpeningType[];
+}
+export default () => {
     const openings = useOpenings();
 
     return <UserLayout>
+        {openings.data?.data.data && <OpeningsIndex openings={openings.data.data.data}/>}
+    </UserLayout>
+}
+
+const OpeningsIndex: NextPage<Props> = ({openings}) => {
+    return <>
         <PageTitle>Aberturas</PageTitle>
         <div className="w-full flex justify-between gap-6">
             <Select>
@@ -22,13 +32,12 @@ const OpeningsIndex: NextPage = () => {
             </Link>
         </div>
         <ListItemGroup>
-            {openings.data?.data.data.map(opening => (
+            {openings.map(opening => (
                 <ListItem
                     title={`Abertura ${opening.id}`}
                     description={`Taxa de entrega de R$ ${opening.delivery_fee} · ${opening.delivery_count} pedidos de entrega · ${opening.pickup_count} pedidos para retirada`}
                 />
             ))}
         </ListItemGroup>
-    </UserLayout>
+    </>
 }
-export default OpeningsIndex

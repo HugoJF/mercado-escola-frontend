@@ -5,15 +5,25 @@ import {PageTitle} from "@components/text/page-title";
 import {useCurrentOpening} from "@queries/use-current-opening";
 import {ProductCard} from "@components/product-card";
 import {ProductDeck} from "@components/product-deck";
+import {OpeningType} from "@models/openings";
 
-const Index: NextPage = () => {
+type Props = {
+    currentOpening: OpeningType;
+};
+
+export default () => {
     const opening = useCurrentOpening();
 
+    return <UserLayout>
+        {opening.data?.data.data && <Index currentOpening={opening.data.data.data}/>}
+    </UserLayout>
+}
+const Index: NextPage<Props> = ({currentOpening}) => {
     return <UserLayout>
         <PageTitle>Produtos</PageTitle>
 
         <ProductDeck>
-            {opening.data?.data.data.products.map(product => (
+            {currentOpening.products.map(product => (
                 <Link href={`products/${product.id}`}>
                     <ProductCard
                         name={product.name}
@@ -26,4 +36,3 @@ const Index: NextPage = () => {
         </ProductDeck>
     </UserLayout>
 }
-export default Index

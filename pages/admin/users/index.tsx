@@ -13,18 +13,34 @@ import {useUsers} from "@queries/use-users";
 import {useUserUpdate} from "@mutations/use-user-update";
 import {UserType} from "@models/users";
 
-const UsersIndex: NextPage = () => {
+type Props = {
+    users: UserType[];
+    onUserUpdate?: () => void;
+};
+
+export default () => {
     const users = useUsers();
+
+    return <UserLayout>
+        {users.data?.data.data && <UsersIndex
+            users={users.data.data.data}
+            onUserUpdate={() => users.refetch()}
+        />}
+    </UserLayout>
+}
+const UsersIndex: NextPage<Props> = ({users, onUserUpdate}) => {
     const updateUser = useUserUpdate();
 
     async function handleUserUpdate(user: UserType, role: string) {
         const admin = role === 'administrator';
         // TODO handle exceptions
         await updateUser.mutateAsync({id: user.id, data: {admin}});
-        await users.refetch()
+        if (onUserUpdate) {
+            onUserUpdate();
+        }
     }
 
-    return <UserLayout>
+    return <>
         <PageTitle>Usuários registrados</PageTitle>
         <Table>
             <Thead>
@@ -33,7 +49,7 @@ const UsersIndex: NextPage = () => {
                 <TheadTd>Cargo</TheadTd>
             </Thead>
             <Tbody>
-                {users.data?.data.data.map(user => (
+                {users.map(user => (
                     <Tr key={user.id}>
                         <Td>
                             <h5>{user.name}</h5>
@@ -60,6 +76,5 @@ const UsersIndex: NextPage = () => {
                 ))}
             </Tbody>
         </Table>
-    </UserLayout>
+    </>
 }
-export default UsersIndex

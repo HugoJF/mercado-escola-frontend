@@ -37,6 +37,7 @@ const menu = [{
     ]
 }];
 
+// TODO: better way to handle admin routes
 const Home: NextPage = () => {
     return <Admin><UserLayout>
         <PageTitle>Administrativo</PageTitle>
