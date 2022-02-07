@@ -4,6 +4,7 @@ import {useRouter} from "next/router";
 import {ReactNode} from "react";
 import {ChevronRight} from "react-feather";
 import {Breadcrumbs} from "@models/breadcrumbs";
+import Head from "next/head";
 
 const bc: Breadcrumbs = {
     '/': {title: 'Início'},
@@ -29,6 +30,9 @@ const bc: Breadcrumbs = {
 export const Breadcrumb: NextPage = () => {
     const router = useRouter();
 
+    const current = bc[router.route];
+    const title = current?.title;
+
     function buildBreadcrumb(route: string): ReactNode {
         const crumb = bc[route];
 
@@ -49,9 +53,16 @@ export const Breadcrumb: NextPage = () => {
         </>
     }
 
-    return <div className="text-gray-500 text-sm border-gray-300 border-b">
+    // TODO maybe split breadcrumb from title + route config file
+    return <>
+        <Head>
+            {title && <title>{title} - Mercado Escola</title>}
+            {!title && <title>Mercado Escola</title>}
+        </Head>
+        <div className="text-gray-500 text-sm border-gray-300 border-b">
         <div className="container mx-auto flex items-center py-2 px-6">
             {buildBreadcrumb(router.route)}
         </div>
-    </div>;
+    </div>
+    </>;
 };

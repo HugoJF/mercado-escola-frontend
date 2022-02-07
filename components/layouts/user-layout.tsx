@@ -6,6 +6,7 @@ import {NotificationBox} from "@components/notification-box";
 import {CartBar} from "@components/cart-bar";
 import {Authed} from "@components/gates/authed";
 import {Loader} from "react-feather";
+import Head from "next/head";
 
 type Props = {
     className?: string;
