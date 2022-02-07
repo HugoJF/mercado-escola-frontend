@@ -31,7 +31,7 @@ export const AddToCartModal: NextPage<Props> = ({product, open, onClose, childre
     }, [cart.data])
 
     const changed = cartQuantity !== quantity;
-    const loading = cart.isLoading || addToCart.isLoading || removeFromCart.isLoading;
+    const loading = cart.isLoading || cart.isRefetching || addToCart.isLoading || removeFromCart.isLoading;
 
     useTrigger(() => {
         setQuantity((product.weight_increment ?? 1));
@@ -47,6 +47,7 @@ export const AddToCartModal: NextPage<Props> = ({product, open, onClose, childre
 
     async function add() {
         await addToCart.mutateAsync({product_id: product.id, quantity});
+        await cart.refetch();
     }
 
     async function goToCart() {
@@ -55,6 +56,7 @@ export const AddToCartModal: NextPage<Props> = ({product, open, onClose, childre
 
     async function update() {
         await addToCart.mutateAsync({product_id: product.id, quantity});
+        await cart.refetch();
     }
 
     async function remove() {
