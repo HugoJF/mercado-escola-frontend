@@ -19,7 +19,7 @@ export default () => {
     </UserLayout>
 }
 const Index: NextPage<Props> = ({currentOpening}) => {
-    return <UserLayout>
+    return <>
         <PageTitle>Produtos</PageTitle>
 
         <ProductDeck>
@@ -34,5 +34,5 @@ const Index: NextPage<Props> = ({currentOpening}) => {
                 </Link>
             ))}
         </ProductDeck>
-    </UserLayout>
+    </>
 }

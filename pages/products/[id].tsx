@@ -22,7 +22,7 @@ export default () => {
     const product = useProduct(router.query.id as string);
     const cart = useCart()
 
-    return <UserLayout>
+    return <UserLayout className="grid">
         {cart.data?.data && product.data?.data.data && <ProductShow
             cart={cart.data?.data}
             product={product.data.data.data}
@@ -36,7 +36,7 @@ const ProductShow: NextPage<Props> = ({cart, product}) => {
         return cart.products.map(product => product.id).includes(product.id);
     }, [cart])
 
-    return <UserLayout className="grid">
+    return <>
         {product && <AddToCartModal
             product={product}
             open={modalOpen}
@@ -66,5 +66,5 @@ const ProductShow: NextPage<Props> = ({cart, product}) => {
         <Button color="primary" onClick={() => setModalOpen(true)}>
             {inCart ? 'Modificar' : 'Adicionar ao carrinho'}
         </Button>
-    </UserLayout>
+    </>
 }

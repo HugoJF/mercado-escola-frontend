@@ -27,7 +27,7 @@ export default () => {
     const cart = useCart();
     const opening = useCurrentOpening();
 
-    return <UserLayout>
+    return <UserLayout className="grid">
         {opening.data?.data.data && cart.data?.data && <CartIndex
             opening={opening.data?.data.data}
             cart={cart.data?.data}
@@ -65,7 +65,7 @@ const CartIndex: NextPage<Props> = ({opening, cart}) => {
         await router.push(`/orders/${response.data.data.id}/success`);
     }
 
-    return <UserLayout className="grid">
+    return <>
         <CartTypeModal
             selected={!!cart.address}
             open={cartTypeModal}
@@ -169,5 +169,5 @@ const CartIndex: NextPage<Props> = ({opening, cart}) => {
         <Button loading={orderStore.isLoading} color="primary" onClick={handleOrderStore}>
             Finalizar pedido
         </Button>
-    </UserLayout>
+    </>
 }
