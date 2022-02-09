@@ -7,7 +7,7 @@ import {useOrders} from "@queries/use-orders";
 import {Badge} from "@components/badge";
 import {PriceFormatter} from "@components/ui/price-formatter";
 import {DateFormatter} from "@components/ui/date-formatter";
-import {QuantityFormatter} from "@components/ui/quantity-formatter";
+import {ProductListItem} from "@components/product/product-list-item";
 
 type Props = {
     orders: OrderType<OrderWithAddress & OrderWithOpening & OrderWithProducts>[];
@@ -57,22 +57,9 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
                         </div>
                     </div>
                     <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {/* TODO extract this component */}
                         {order.products.map(product => (
                             <Link href={`/products/${product.id}`}>
-                                <div className="flex space-x-3 cursor-pointer">
-                                    <img src={Object.values(product.media_links)[0]} className="h-20 aspect-square rounded"/>
-                                    <div>
-                                        <h2>{product.name}</h2>
-                                        <div className="text-gray-700">
-                                            <QuantityFormatter quantity={product.pivot.quantity} product={product}/>
-                                        </div>
-                                        <div className="text-orange-500">
-                                            {/* todo handle quantity */}
-                                            <PriceFormatter price={product.quantity_cost}/>
-                                        </div>
-                                    </div>
-                                </div>
+                                <ProductListItem product={product}/>
                             </Link>
                         ))}
                     </div>

@@ -6,6 +6,7 @@ import {OpeningType} from "./openings";
 export type OrderWithAddress = { address?: AddressType };
 export type OrderWithOpening = { opening: OpeningType };
 export type OrderWithProducts = { products: ProductType<PivotOrderProduct>[] };
+// todo check against PivotCartProductsUser
 export type PivotOrderProduct = Pivot<{
     order_id: string;
     product_id: number;

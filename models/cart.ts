@@ -3,6 +3,7 @@ import {AddressType} from "./addresses";
 import {ProductType} from "./products";
 import {Pivot} from "@models/global";
 
+// todo check against PivotOrderProduct
 export type PivotCartProductsUser = Pivot<{
     holder_id: number;
     holder_type: string;

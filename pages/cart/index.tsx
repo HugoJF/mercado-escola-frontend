@@ -17,6 +17,7 @@ import {useOrderStore} from "@mutations/use-order-store";
 import {useRouter} from "next/router";
 import {OpeningType} from "@models/openings";
 import {CartType} from "@models/cart";
+import {ProductListItem} from "@components/product/product-list-item";
 
 type Props = {
     opening: OpeningType;
@@ -80,31 +81,12 @@ const CartIndex: NextPage<Props> = ({opening, cart}) => {
 
         <PageTitle>Carrinho</PageTitle>
 
-        {/* TODO: pull items from API */}
         <ul className="flex flex-col gap-6">
             {cart.products.map(product => (
                 <Link href={`/products/${product.id}`}>
 
-                    <li className="flex gap-6">
-                        {/* Product image */}
-                        <img
-                            alt={product.name}
-                            src={Object.values(product.media_links)?.[0]}
-                            className="h-24  aspect-square rounded"
-                        />
-
-                        {/* Product details */}
-                        <div className="flex flex-col flex-grow">
-                            <h2>{product.name}</h2>
-                            <span className="text-gray-500">
-                                {product.pivot.quantity}
-                                {' '}
-                                {product.pivot.quantity === 1 ? product.unit_name_singular : product.unit_name_plural}
-                            </span>
-                            <span className="text-orange-500">
-                                <PriceFormatter price={product.pivot.quantity_cost * product.pivot.quantity}/>
-                            </span>
-                        </div>
+                    <li className="flex gap-6 justify-between">
+                        <ProductListItem product={product}/>
 
                         {/* Product controls */}
                         <a className="flex items-center gap-6 text-gray-500 cursor-pointer">
