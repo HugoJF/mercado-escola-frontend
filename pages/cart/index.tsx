@@ -84,8 +84,7 @@ const CartIndex: NextPage<Props> = ({opening, cart}) => {
         <ul className="flex flex-col gap-6">
             {cart.products.map(product => (
                 <Link href={`/products/${product.id}`}>
-
-                    <li className="flex gap-6 justify-between">
+                    <li className="flex gap-6 justify-between cursor-pointer">
                         <ProductListItem product={product}/>
 
                         {/* Product controls */}
@@ -147,7 +146,6 @@ const CartIndex: NextPage<Props> = ({opening, cart}) => {
             </p>
         </div>
 
-        {/* TODO call API */}
         <Button loading={orderStore.isLoading} color="primary" onClick={handleOrderStore}>
             Finalizar pedido
         </Button>

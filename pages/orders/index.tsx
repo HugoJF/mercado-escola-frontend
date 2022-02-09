@@ -59,7 +59,7 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
                     <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         {order.products.map(product => (
                             <Link href={`/products/${product.id}`}>
-                                <ProductListItem product={product}/>
+                                <ProductListItem className="cursor-pointer" product={product}/>
                             </Link>
                         ))}
                     </div>
