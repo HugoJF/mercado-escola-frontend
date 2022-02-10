@@ -8,6 +8,7 @@ import {Badge} from "@components/badge";
 import {PriceFormatter} from "@components/ui/price-formatter";
 import {DateFormatter} from "@components/ui/date-formatter";
 import {ProductListItem} from "@components/product/product-list-item";
+import {Button} from "@components/button";
 
 type Props = {
     orders: OrderType<OrderWithAddress & OrderWithOpening & OrderWithProducts>[];
@@ -27,7 +28,7 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
         {/* todo: unmock */}
         {orders.map(order => (
             <Link href={`orders/${order.id}`}>
-                <div>
+                <div className="cursor-pointer">
                     <div className="flex p-6 space-x-6 bg-white border border-gray-300 rounded">
                         <div className="flex flex-col items-center space-y-2">
                             <h2 className="text-gray-700 text-sm uppercase">Código</h2>
@@ -54,6 +55,9 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
                             <h2 className="text-gray-700 text-sm uppercase">Endereço</h2>
                             {/* todo get name */}
                             <span>{order.address.address}</span>
+                        </div>
+                        <div className="flex flex-grow justify-end items-center">
+                            <Button>Detalhes</Button>
                         </div>
                     </div>
                     <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

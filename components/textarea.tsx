@@ -1,16 +1,18 @@
-import {DetailedHTMLProps, InputHTMLAttributes} from "react";
-import {NextPage} from "next";
+import {DetailedHTMLProps, forwardRef, InputHTMLAttributes} from "react";
 import clsx from "clsx";
 
 type NativeProps = DetailedHTMLProps<InputHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement>
 type ExtraProps = {
     error?: string;
 }
+type Props = NativeProps & ExtraProps;
 
-export const Textarea: NextPage<NativeProps & ExtraProps> = ({id, name, placeholder, error, className, ...props}) => {
-    return <div className={className}>
-        <div className="group relative">
+export const Textarea = forwardRef<HTMLTextAreaElement, Props>(
+    ({id, name, placeholder, error, className, ...props}, ref) => {
+        return <div className={className}>
+            <div className="group relative">
             <textarea
+                ref={ref}
                 id={id}
                 name={name}
                 {...props}
@@ -22,22 +24,23 @@ export const Textarea: NextPage<NativeProps & ExtraProps> = ({id, name, placehol
                 })}
             />
 
-            <label
-                htmlFor={id}
-                className={clsx('duration-150 absolute top-0 pointer-events-none',
-                    'translate-y-3 peer-placeholder-shown:translate-y-6 peer-focus:translate-y-3',
-                    'left-0 inset-y-0 pl-6 inset-left',
-                    'text-sm cursor-text', {
-                        'text-gray-500': !error,
-                        'text-red-500': error,
-                    })}
-            >
-                {placeholder ?? name}
-            </label>
-        </div>
+                <label
+                    htmlFor={id}
+                    className={clsx('duration-150 absolute top-0 pointer-events-none',
+                        'translate-y-3 peer-placeholder-shown:translate-y-6 peer-focus:translate-y-3',
+                        'left-0 inset-y-0 pl-6 inset-left',
+                        'text-sm cursor-text', {
+                            'text-gray-500': !error,
+                            'text-red-500': error,
+                        })}
+                >
+                    {placeholder ?? name}
+                </label>
+            </div>
 
-        {error && <span className="block text-sm text-red-500">
+            {error && <span className="block text-sm text-red-500">
             {error}
         </span>}
-    </div>;
-};
+        </div>;
+    }
+);

@@ -8,6 +8,7 @@ import {ListItemGroup} from "@components/list-item-group";
 import {useProducts} from "@queries/use-products";
 import {useMemo, useState} from "react";
 import {ProductType} from "@models/products";
+import Link from "next/link";
 
 type Props = {
     products: ProductType[];
@@ -37,7 +38,9 @@ const ProductsIndex: NextPage<Props> = ({products}) => {
                 placeholder="Busca de produto por nome"
                 className="flex-grow"
             />
-            <Button color="primary">Adicionar produto</Button>
+            <Link href="/admin/products/create">
+                <Button color="primary">Adicionar produto</Button>
+            </Link>
         </div>
 
         {/* TODO: empty state for list item group */}
@@ -46,7 +49,7 @@ const ProductsIndex: NextPage<Props> = ({products}) => {
                 <ListItem
                     title={product.name}
                     /* TODO missing image count + price format */
-                    description={'R$' + product.quantity_cost / 100 + '/' + product.unit_name_singular}
+                    description={'R$' + product.quantity_cost + '/' + product.unit_name_singular}
                 />
             ))}
         </ListItemGroup>
