@@ -46,11 +46,13 @@ const ProductsIndex: NextPage<Props> = ({products}) => {
         {/* TODO: empty state for list item group */}
         <ListItemGroup>
             {filteredProducts?.map(product => (
-                <ListItem
-                    title={product.name}
-                    /* TODO missing image count + price format */
-                    description={'R$' + product.quantity_cost + '/' + product.unit_name_singular}
-                />
+                <Link href={`/admin/products/${product.id}/edit`}>
+                    <ListItem
+                        title={product.name}
+                        /* TODO missing image count + price format */
+                        description={'R$' + product.quantity_cost + '/' + product.unit_name_singular}
+                    />
+                </Link>
             ))}
         </ListItemGroup>
     </>

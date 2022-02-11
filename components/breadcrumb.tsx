@@ -22,6 +22,7 @@ const bc: Breadcrumbs = {
     '/account/addresses/confirm': {title: 'Confirmando endereço', root: '/account/addresses'},
     '/admin/products': {title: 'Produtos', root: '/admin'},
     '/admin/products/create': {title: 'Registrando novo produto', root: '/admin/products'},
+    '/admin/products/[id]/edit': {title: 'Editando produto', root: '/admin/products'},
     '/admin/openings': {title: 'Aberturas', root: '/admin'},
     '/admin/openings/create': {title: 'Registrando nova abertura', root: '/admin/openings'},
     '/admin/openings/[id]': {title: 'Abertura', root: '/admin/openings'},
