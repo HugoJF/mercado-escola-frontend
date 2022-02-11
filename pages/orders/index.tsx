@@ -9,6 +9,7 @@ import {PriceFormatter} from "@components/ui/price-formatter";
 import {DateFormatter} from "@components/ui/date-formatter";
 import {ProductListItem} from "@components/product/product-list-item";
 import {Button} from "@components/button";
+import {ProductList} from "@components/product/product-list";
 
 type Props = {
     orders: OrderType<OrderWithAddress & OrderWithOpening & OrderWithProducts>[];
@@ -60,13 +61,8 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
                             <Button>Detalhes</Button>
                         </div>
                     </div>
-                    <div className="p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {order.products.map(product => (
-                            <Link href={`/products/${product.id}`}>
-                                <ProductListItem className="cursor-pointer" product={product}/>
-                            </Link>
-                        ))}
-                    </div>
+
+                    <ProductList compact products={order.products}/>
                 </div>
             </Link>
         ))}

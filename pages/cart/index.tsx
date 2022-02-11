@@ -18,6 +18,7 @@ import {useRouter} from "next/router";
 import {OpeningType} from "@models/openings";
 import {CartType} from "@models/cart";
 import {ProductListItem} from "@components/product/product-list-item";
+import {ProductList} from "@components/product/product-list";
 
 type Props = {
     opening: OpeningType;
@@ -81,21 +82,15 @@ const CartIndex: NextPage<Props> = ({opening, cart}) => {
 
         <PageTitle>Carrinho</PageTitle>
 
-        <ul className="flex flex-col gap-6">
-            {cart.products.map(product => (
-                <Link href={`/products/${product.id}`}>
-                    <li className="flex gap-6 justify-between cursor-pointer">
-                        <ProductListItem product={product}/>
-
-                        {/* Product controls */}
-                        <a className="flex items-center gap-6 text-gray-500 cursor-pointer">
-                            <Trash/>
-                            <Edit/>
-                        </a>
-                    </li>
-                </Link>
-            ))}
-        </ul>
+        <ProductList
+            products={cart.products}
+            onClick={product => router.push(`/products/${product.id}`)}
+        >
+            <a className="flex items-center gap-6 text-gray-500 cursor-pointer">
+                <Trash/>
+                <Edit/>
+            </a>
+        </ProductList>
 
         {opening.delivery_fee && <div className="flex justify-between">
             <span>Taxa de entrega</span>

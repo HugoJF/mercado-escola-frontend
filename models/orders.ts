@@ -2,6 +2,7 @@ import {ProductType} from "./products";
 import {Pivot, SoftDeletes, Timestamps} from "@models/global";
 import {AddressType} from "./addresses";
 import {OpeningType} from "./openings";
+import {PivotCartProductsUser} from "@models/cart";
 
 export type OrderWithAddress = { address?: AddressType };
 export type OrderWithOpening = { opening: OpeningType };
@@ -35,7 +36,7 @@ export type OrdersComputedProperties = {
 }
 
 export type OrderRelationshipProperties = {
-    products: number[];
+    products: ProductType<PivotCartProductsUser>[];
     address: AddressType;
     quantities: { [productId: number]: number }
     costs: { [productId: number]: number }

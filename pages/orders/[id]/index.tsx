@@ -3,12 +3,15 @@ import {UserLayout} from "@components/layouts/user-layout";
 import {useOrder} from "@queries/use-order";
 import {useRouter} from "next/router";
 import {PageTitle} from "@components/text/page-title";
-import {OrderType} from "@models/orders";
-import {DollarSign, Info, ShoppingBag} from "react-feather";
+import {OrderType, OrderWithOpening} from "@models/orders";
+import {Calendar, DollarSign, Info} from "react-feather";
 import {SectionTitle} from "@components/section-title";
+import {PriceFormatter} from "@components/ui/price-formatter";
+import {ProductList} from "@components/product/product-list";
+import {DateFormatter} from "@components/ui/date-formatter";
 
 type Props = {
-    order: OrderType;
+    order: OrderType<OrderWithOpening>;
 }
 
 export default () => {
@@ -36,8 +39,26 @@ const OrderShow: NextPage<Props> = ({order}) => {
         <div className="flex">
             <DollarSign className="mr-6 text-gray-500"/>
             <p className="text-gray-500">
-                O pedido foi recebido pelo sistema mas ainda não foi confirmado pelo mercado.
+                {/* todo plural singular */}
+                <span className="text-orange-500"><PriceFormatter
+                    price={order.total}/></span> em {order.products.length} itens
             </p>
         </div>
+
+        <SectionTitle>Data de entrega</SectionTitle>
+        <div className="flex">
+            <Calendar className="mr-6 text-gray-500"/>
+            <p className="text-gray-500">
+                {/* todo fix hour */}
+                <span className="text-orange-500"><DateFormatter
+                    input={order.opening.delivers_at}
+                    format="dd/LL/yy"
+                /></span> às 14h
+            </p>
+        </div>
+
+        <SectionTitle>Produtos</SectionTitle>
+
+        <ProductList compact products={order.products}/>
     </>
 }
