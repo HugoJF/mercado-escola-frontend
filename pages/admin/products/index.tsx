@@ -6,7 +6,7 @@ import {Button} from "@components/button";
 import {ListItem} from "@components/list-item";
 import {ListItemGroup} from "@components/list-item-group";
 import {useProducts} from "@queries/use-products";
-import {useMemo, useState} from "react";
+import React, {useMemo, useState} from "react";
 import {ProductType} from "@models/products";
 import Link from "next/link";
 

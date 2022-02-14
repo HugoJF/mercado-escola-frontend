@@ -33,10 +33,12 @@ const OpeningsIndex: NextPage<Props> = ({openings}) => {
         </div>
         <ListItemGroup>
             {openings.map(opening => (
-                <ListItem
-                    title={`Abertura ${opening.id}`}
-                    description={`Taxa de entrega de R$ ${opening.delivery_fee} · ${opening.delivery_count} pedidos de entrega · ${opening.pickup_count} pedidos para retirada`}
-                />
+                <Link href={`/admin/openings/${opening.id}/products`}>
+                    <ListItem
+                        title={`Abertura ${opening.id}`}
+                        description={`Taxa de entrega de R$ ${opening.delivery_fee} · ${opening.delivery_count} pedidos de entrega · ${opening.pickup_count} pedidos para retirada`}
+                    />
+                </Link>
             ))}
         </ListItemGroup>
     </>

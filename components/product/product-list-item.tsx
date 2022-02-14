@@ -12,7 +12,7 @@ export type WithPivotQuantity = Pivot<{
 
 type NativeProps = DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
 type ComponentProps = {
-    product: ProductType<WithPivotQuantity>;
+    product: ProductType<Partial<WithPivotQuantity>>;
 }
 type Props = NativeProps & ComponentProps;
 
@@ -33,14 +33,16 @@ export const ProductListItem = forwardRef<HTMLDivElement, PropsWithChildren<Prop
             {/* Product details */}
             <div className="flex flex-col flex-grow">
                 <h2>{product.name}</h2>
-                <span className="text-gray-500">
-                {product.pivot.quantity}
+
+                {product.pivot && <span className="text-gray-500">
+                    {product.pivot.quantity}
                     {' '}
                     {product.pivot.quantity === 1 ? product.unit_name_singular : product.unit_name_plural}
-            </span>
-                <span className="text-orange-500">
-                <PriceFormatter price={product.pivot.quantity_cost * product.pivot.quantity}/>
-            </span>
+                </span>}
+
+                {product.pivot && <span className="text-orange-500">
+                    <PriceFormatter price={product.pivot.quantity_cost * product.pivot.quantity}/>
+                </span>}
             </div>
         </div>
     }
