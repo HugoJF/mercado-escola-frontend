@@ -8,6 +8,7 @@ import {SectionTitle} from "@components/section-title";
 import {Calendar, ShoppingCart} from "react-feather";
 import {DateFormatter} from "@components/ui/date-formatter";
 import {Button} from "@components/button";
+import Link from "next/link";
 
 type Props = {
     opening: OpeningType;
@@ -26,9 +27,13 @@ const AdminOpeningShow: NextPage<Props> = ({opening}) => {
     return <>
         <div className="flex justify-between">
             <PageTitle>Abertura {opening.id}</PageTitle>
-            <div>
-                <Button>Modificar produtos habilitados</Button> {/* todo */}
-                <Button color="primary">Editar</Button> {/* todo */}
+            <div className="space-x-6">
+                <Link href={`/admin/openings/${opening.id}/products`}>
+                    <Button>Modificar produtos habilitados</Button>
+                </Link>
+                <Link href={`/admin/openings/${opening.id}/edit`}>
+                    <Button color="primary">Editar</Button>
+                </Link>
             </div>
         </div>
 

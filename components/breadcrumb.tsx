@@ -5,6 +5,7 @@ import {ReactNode} from "react";
 import {ChevronRight} from "react-feather";
 import {Breadcrumbs} from "@models/breadcrumbs";
 import Head from "next/head";
+import {ParsedUrlQuery} from "querystring";
 
 const bc: Breadcrumbs = {
     '/': {title: 'Início'},
@@ -26,7 +27,8 @@ const bc: Breadcrumbs = {
     '/admin/openings': {title: 'Aberturas', root: '/admin'},
     '/admin/openings/create': {title: 'Registrando nova abertura', root: '/admin/openings'},
     '/admin/openings/[id]': {title: 'Abertura', root: '/admin/openings'},
-    '/admin/openings/[id]/products': {title: 'Produtos da abertura', root: '/admin/openings'},
+    '/admin/openings/[id]/products': {title: 'Produtos da abertura', root: '/admin/openings/[id]'},
+    '/admin/openings/[id]/edit': {title: 'Editando abertura [id]', root: '/admin/openings/[id]'},
     '/admin/users': {title: 'Usuários', root: '/admin'},
 }
 
@@ -35,6 +37,11 @@ export const Breadcrumb: NextPage = () => {
 
     const current = bc[router.route];
     const title = current?.title;
+    const query = router.query;
+
+    function interpolate(route: string, params: ParsedUrlQuery) {
+        return route.replace(/\[([^\]]+)]/g, (_, key) => params[key] ?? key);
+    }
 
     function buildBreadcrumb(route: string): ReactNode {
         const crumb = bc[route];
@@ -46,11 +53,11 @@ export const Breadcrumb: NextPage = () => {
         return <>
             {crumb.root && buildBreadcrumb(crumb.root)}
             {route !== '/' && <ChevronRight className="h-5"/>}
-            <Link href={route}>
+            <Link href={interpolate(route, query)}>
                 <a
                     className="duration-150 px-2 py-1 hover:text-gray-600 hover:bg-gray-200 rounded"
                 >
-                    {crumb.title}
+                    {interpolate(crumb.title, query)}
                 </a>
             </Link>
         </>
