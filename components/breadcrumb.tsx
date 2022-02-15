@@ -12,10 +12,10 @@ const bc: Breadcrumbs = {
     '/logout': {title: 'Sair', root: '/'},
     '/cart': {title: 'Carrinho', root: '/'},
     '/admin': {title: 'Administrativo', root: '/'},
-    '/products/[id]': {title: 'Produto', root: '/'},
+    '/products/[id]': {title: '[id]', root: '/'},
     '/orders': {title: 'Pedidos', root: '/'},
-    '/orders/[id]': {title: 'Pedido', root: '/orders'},
-    '/orders/[id]/success': {title: 'Pedido realizado', root: '/orders/[id]'},
+    '/orders/[id]': {title: 'Pedido [id]', root: '/orders'},
+    '/orders/[id]/success': {title: 'Pedido [id] realizado', root: '/orders/[id]'},
     '/account': {title: 'Minha conta', root: '/'},
     '/account/update-phone': {title: 'Atualizando número de telefone', root: '/account'},
     '/account/addresses': {title: 'Endereços', root: '/account'},
@@ -23,11 +23,11 @@ const bc: Breadcrumbs = {
     '/account/addresses/confirm': {title: 'Confirmando endereço', root: '/account/addresses'},
     '/admin/products': {title: 'Produtos', root: '/admin'},
     '/admin/products/create': {title: 'Registrando novo produto', root: '/admin/products'},
-    '/admin/products/[id]/edit': {title: 'Editando produto', root: '/admin/products'},
+    '/admin/products/[id]/edit': {title: 'Editando produto [id]', root: '/admin/products'},
     '/admin/openings': {title: 'Aberturas', root: '/admin'},
     '/admin/openings/create': {title: 'Registrando nova abertura', root: '/admin/openings'},
-    '/admin/openings/[id]': {title: 'Abertura', root: '/admin/openings'},
-    '/admin/openings/[id]/products': {title: 'Produtos da abertura', root: '/admin/openings/[id]'},
+    '/admin/openings/[id]': {title: 'Abertura [id]', root: '/admin/openings'},
+    '/admin/openings/[id]/products': {title: 'Produtos da abertura [id]', root: '/admin/openings/[id]'},
     '/admin/openings/[id]/edit': {title: 'Editando abertura [id]', root: '/admin/openings/[id]'},
     '/admin/users': {title: 'Usuários', root: '/admin'},
 }
@@ -35,9 +35,9 @@ const bc: Breadcrumbs = {
 export const Breadcrumb: NextPage = () => {
     const router = useRouter();
 
-    const current = bc[router.route];
-    const title = current?.title;
     const query = router.query;
+    const current = bc[router.route];
+    const title = interpolate(current?.title, query);
 
     function interpolate(route: string, params: ParsedUrlQuery) {
         return route.replace(/\[([^\]]+)]/g, (_, key) => params[key] ?? key);
