@@ -19,15 +19,22 @@ const AdminProductsCreate: NextPage = () => {
     const router = useRouter();
     const productCreate = useProductCreate();
     const [files, setFiles] = useState<FileWithPreview[]>([])
-    const {register, handleSubmit, watch, formState: {isSubmitting, errors}} = useForm<ProductProperties>({
-        defaultValues: {type: 'unit'}
-    });
+    const [type, setType] = useState<'unit' | 'weight'>('unit');
+    const {register, handleSubmit, formState: {isSubmitting, errors}} = useForm<ProductProperties>();
 
     async function submit(data: ProductProperties) {
         const form = new FormData;
 
         for (const [key, value] of Object.entries(data)) {
             form.append(key, String(value));
+        }
+
+        // TODO: improve this
+        if (type === 'weight') {
+            form.append('unit_name_singular', 'kg');
+            form.append('unit_name_plural', 'kg');
+        } else {
+            form.append('quantity_step', '1');
         }
 
         files.forEach(file => {
@@ -68,20 +75,22 @@ const AdminProductsCreate: NextPage = () => {
                 <Toggle
                     id="unit"
                     value="unit"
-                    {...register('type')}
+                    onChange={() => setType('unit')}
+                    checked={type === 'unit'}
                 >
                     Por unidade
                 </Toggle>
                 <Toggle
                     id="weight"
                     value="weight"
-                    {...register('type')}
+                    onChange={() => setType('weight')}
+                    checked={type === 'weight'}
                 >
                     Por peso
                 </Toggle>
             </ToggleGroup>
 
-            {watch('type') === 'unit' && <div className="grid grid-cols-3 gap-6">
+            {type === 'unit' && <div className="grid grid-cols-3 gap-6">
                 <Input
                     placeholder="Nome da unidade no singular (ex: saco, pacote)"
                     error={errors.unit_name_singular?.message}
@@ -99,11 +108,11 @@ const AdminProductsCreate: NextPage = () => {
                 />
             </div>}
 
-            {watch('type') === 'weight' && <div className="grid grid-cols-2 gap-6">
+            {type === 'weight' && <div className="grid grid-cols-2 gap-6">
                 <Input
                     placeholder="Incremento de peso (kg)"
-                    error={errors.weight_increment?.message}
-                    {...register('weight_increment', {required: 'Incremento de peso'})}
+                    error={errors.quantity_step?.message}
+                    {...register('quantity_step', {required: 'Incremento de peso'})}
                 />
                 <Input
                     placeholder="Preço por kg (R$)"

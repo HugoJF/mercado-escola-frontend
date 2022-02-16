@@ -20,11 +20,10 @@ export type ProductType<T = unknown> = T &
 export type ProductProperties = {
     name: string;
     description: string;
-    type: 'weight' | 'unit';
-    quantity_cost: number; /* unit price or kg price */
+    quantity_cost: number;
+    quantity_step: number;
     unit_name_singular: string;
     unit_name_plural: string;
-    weight_increment: number;
 }
 
 export type ProductRelationshipProperties = {
