@@ -36,8 +36,8 @@ const AddressesIndex: NextPage<Props> = ({addresses}) => {
                 <ListItem
                     leftIcon={MapPin}
                     rightIcon={MoreVertical}
-                    title={address.address}
-                    description={[address.number, address.complement].filter(Boolean).join(', ')}
+                    title={address.name}
+                    description={[address.address, address.number].filter(Boolean).join(', ')}
                 />
             ))}
         </ListItemGroup>

@@ -1,7 +1,7 @@
 import {NextPage} from "next";
 import {useRouter} from "next/router";
 import dynamic from "next/dynamic";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import {UserLayout} from "@components/layouts/user-layout";
 import {PageTitle} from "@components/text/page-title";
 import {Input} from "@components/input";
@@ -19,6 +19,7 @@ const ConfirmAddress: NextPage = () => {
     const dispatch = useDispatcher();
     const address = useAddress();
     const router = useRouter();
+    const [name, setName] = useState('');
     const codedCenter = useGeocode(address.address!);
     const addressCreate = useAddressCreate();
 
@@ -40,6 +41,7 @@ const ConfirmAddress: NextPage = () => {
 
     async function handleAddressCreation() {
         await addressCreate.mutateAsync({
+            name: name,
             address: address.address!,
             number: address.number!,
             complement: address.complement,
@@ -77,14 +79,22 @@ const ConfirmAddress: NextPage = () => {
         {codedCenter && address.center && <MapWithPing center={address.center} onCenter={handleOnCenter}/>}
 
         <div className="flex gap-6">
-            <Select>
-                <option value="casa">Casa</option>
-                <option value="apartamento">Apartamento</option>
+            <Select
+                value={name}
+                onChange={e => setName(e.target.value)}
+            >
+                <option value="Casa">Casa</option>
+                <option value="Apartamento">Apartamento</option>
+                <option value="Outro">Outro</option>
             </Select>
-            <Button onClick={handleAddressCreation} className="flex-grow" color="primary">Salvar</Button>
+            <Button
+                onClick={handleAddressCreation}
+                className="flex-grow"
+                color="primary"
+            >
+                Salvar
+            </Button>
         </div>
-
-        {address && <></>}
     </UserLayout>
 }
 export default ConfirmAddress

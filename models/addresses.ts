@@ -4,6 +4,7 @@ export type AddressType = AddressProperties & AddressComputedProperties & Timest
 
 // TODO: migrate to address store
 export type AddressProperties = {
+    name: string;
     address: string;
     number: string;
     latitude: number;
