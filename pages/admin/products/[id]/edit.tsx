@@ -34,6 +34,7 @@ const AdminProductsEdit: FC<Props> = ({product}) => {
     const productUpdate = useProductUpdate(product.id);
     const productDestroyMedia = useProductDestroyMedia();
     const [files, setFiles] = useState<FileWithPreview[]>([])
+    const [type, setType] = useState<'unit' | 'weight'>('unit');
     const {register, handleSubmit, watch, formState: {isSubmitting, errors}} = useForm<ProductProperties>({
         defaultValues: product,
     });
@@ -96,20 +97,22 @@ const AdminProductsEdit: FC<Props> = ({product}) => {
                 <Toggle
                     id="unit"
                     value="unit"
-                    {...register('type')}
+                    onChange={() => setType('unit')}
+                    checked={type === 'unit'}
                 >
                     Por unidade
                 </Toggle>
                 <Toggle
                     id="weight"
                     value="weight"
-                    {...register('type')}
+                    onChange={() => setType('weight')}
+                    checked={type === 'weight'}
                 >
                     Por peso
                 </Toggle>
             </ToggleGroup>
 
-            {watch('type') === 'unit' && <div className="grid grid-cols-3 gap-6">
+            {type === 'unit' && <div className="grid grid-cols-3 gap-6">
                 <Input
                     placeholder="Nome da unidade no singular (ex: saco, pacote)"
                     error={errors.unit_name_singular?.message}
@@ -127,11 +130,11 @@ const AdminProductsEdit: FC<Props> = ({product}) => {
                 />
             </div>}
 
-            {watch('type') === 'weight' && <div className="grid grid-cols-2 gap-6">
+            {type === 'weight' && <div className="grid grid-cols-2 gap-6">
                 <Input
                     placeholder="Incremento de peso (kg)"
-                    error={errors.weight_increment?.message}
-                    {...register('weight_increment', {required: 'Incremento de peso'})}
+                    error={errors.quantity_step?.message}
+                    {...register('quantity_step', {required: 'Incremento de peso'})}
                 />
                 <Input
                     placeholder="Preço por kg (R$)"

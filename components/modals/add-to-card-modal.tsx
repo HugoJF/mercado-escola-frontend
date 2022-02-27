@@ -34,15 +34,15 @@ export const AddToCartModal: NextPage<Props> = ({product, open, onClose, childre
     const loading = cart.isLoading || cart.isRefetching || addToCart.isLoading || removeFromCart.isLoading;
 
     useTrigger(() => {
-        setQuantity((product.weight_increment ?? 1));
+        setQuantity((product.quantity_step ?? 1));
     }, open, [true])
 
     function addQuantity() {
-        setQuantity(quantity + (product.weight_increment ?? 1));
+        setQuantity(quantity + (product.quantity_step ?? 1));
     }
 
     function subtractQuantity() {
-        setQuantity(Math.max(0, quantity - (product.weight_increment ?? 1)));
+        setQuantity(Math.max(0, quantity - (product.quantity_step ?? 1)));
     }
 
     async function add() {
