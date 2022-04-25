@@ -17,7 +17,7 @@ type Props = {
     cart: CartType;
 }
 
-export default () => {
+export default function ProductShowContainer() {
     const router = useRouter();
     const product = useProduct(router.query.id as string);
     const cart = useCart()
@@ -68,3 +68,5 @@ const ProductShow: NextPage<Props> = ({cart, product}) => {
         </Button>
     </>
 }
+
+ProductShow.displayName = 'ProductShow';

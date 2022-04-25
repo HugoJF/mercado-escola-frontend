@@ -21,7 +21,7 @@ if (typeof window !== "undefined") {
     window.axios.defaults.headers.common['Accept'] = 'application/json';
     window.axios.defaults.withCredentials = true;
     window.axios.defaults.maxRedirects = 0;
-    window.axios.defaults.baseURL = 'http://market.test/'
+    window.axios.defaults.baseURL = process.env.NEXT_PUBLIC_BASE_URL;
 }
 
 /**

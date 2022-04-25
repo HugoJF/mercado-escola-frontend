@@ -2,7 +2,7 @@ import {DetailedHTMLProps, forwardRef, InputHTMLAttributes} from "react";
 
 type NativeProps = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 
-export const Toggle = forwardRef<HTMLInputElement, NativeProps>(
+const Toggle = forwardRef<HTMLInputElement, NativeProps>(
     ({id, name, placeholder, children, ...rest}, ref) => {
         return <div
             className="border-t border-b border-r border-gray-300 first:rounded-l first:border-l last:rounded-r last:border-r overflow-hidden"
@@ -24,3 +24,7 @@ export const Toggle = forwardRef<HTMLInputElement, NativeProps>(
         </div>;
     }
 );
+
+Toggle.displayName = 'Toggle';
+
+export {Toggle};

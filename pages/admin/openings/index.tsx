@@ -12,7 +12,7 @@ import {OpeningType} from "@models/openings";
 type Props = {
     openings: OpeningType[];
 }
-export default () => {
+export default function OpeningsIndexContainer() {
     const openings = useOpenings();
 
     return <UserLayout>
@@ -33,7 +33,7 @@ const OpeningsIndex: NextPage<Props> = ({openings}) => {
         </div>
         <ListItemGroup>
             {openings.map(opening => (
-                <Link href={`/admin/openings/${opening.id}`}>
+                <Link key={opening.id} href={`/admin/openings/${opening.id}`}>
                     <ListItem
                         title={`Abertura ${opening.id}`}
                         description={`Taxa de entrega de R$ ${opening.delivery_fee} · ${opening.delivery_count} pedidos de entrega · ${opening.pickup_count} pedidos para retirada`}

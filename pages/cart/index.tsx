@@ -25,7 +25,7 @@ type Props = {
     cart: CartType;
 }
 
-export default () => {
+export default function CartIndexContainer() {
     const cart = useCart();
     const opening = useCurrentOpening();
 

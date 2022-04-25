@@ -33,7 +33,7 @@ export const Dropzone: FC<Props> = ({uploadingFiles, setUploadingFiles, existing
             {...getRootProps()}
         >
             <input {...getInputProps()} />
-            <p>Drag 'n' drop some files here, or click to select files</p>
+            <p>Drag &apos;n&apos; drop some files here, or click to select files</p>
         </div>
         <aside className="flex flex-wrap gap-6">
             {existingFiles?.map(file => (<img

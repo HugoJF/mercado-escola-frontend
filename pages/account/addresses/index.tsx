@@ -13,7 +13,7 @@ import {AddressType} from "@models/addresses";
 type Props = {
     addresses: AddressType[];
 }
-export default () => {
+export default function AddressesIndexContainer () {
     const addresses = useAddresses();
 
     return <UserLayout className="grid">
@@ -34,6 +34,7 @@ const AddressesIndex: NextPage<Props> = ({addresses}) => {
         <ListItemGroup>
             {addresses.map(address => (
                 <ListItem
+                    key={address.id}
                     leftIcon={MapPin}
                     rightIcon={MoreVertical}
                     title={address.name}
@@ -48,3 +49,5 @@ const AddressesIndex: NextPage<Props> = ({addresses}) => {
         />}
     </>
 }
+
+AddressesIndex.displayName = 'AddressesIndex';

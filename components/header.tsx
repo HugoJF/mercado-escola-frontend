@@ -23,6 +23,8 @@ const IconContainer: NextPage<IconContainerProps> = forwardRef<HTMLDivElement, I
         </div>
     ));
 
+IconContainer.displayName = 'IconContainer';
+
 const desktopMenu: { icon: Icon, href: string, display: 'mobile' | 'desktop' }[] = [{
     icon: Heart,
     href: '/',
@@ -110,7 +112,7 @@ export const Header: NextPage = () => {
             className="py-2 w-full border-b border-gray-300 shadow-lg"
             onClick={toggleMenu}
         >
-            {mobileMenu.map(({label, href, icon: Icon}) => <Link href={href}>
+            {mobileMenu.map(({label, href, icon: Icon}) => <Link key={href} href={href}>
                 <div className="flex items-center px-5 py-4 hover:bg-gray-50 cursor-pointer">
                     <Icon className="text-gray-500"/>
                     <span className="ml-4">{label}</span>

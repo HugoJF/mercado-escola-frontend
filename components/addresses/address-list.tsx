@@ -15,6 +15,7 @@ export const AddressList: FC<Props> = ({addresses, onClick, leftIcon = MapPin, r
     return <ListItemGroup>
         {addresses.map(address => (
             <ListItem
+                key={address.id}
                 leftIcon={leftIcon}
                 rightIcon={rightIcon}
                 title={address.address}

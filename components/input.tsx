@@ -7,7 +7,7 @@ type ExtraProps = {
 }
 type Props = NativeProps & ExtraProps;
 
-export const Input = forwardRef<HTMLInputElement, Props>(
+const Input = forwardRef<HTMLInputElement, Props>(
     ({id, name, placeholder, error, className, ...props}, ref) => {
         return <div className={className}>
             <div className="group relative">
@@ -45,3 +45,6 @@ export const Input = forwardRef<HTMLInputElement, Props>(
     }
 )
 
+Input.displayName = 'Input';
+
+export {Input};

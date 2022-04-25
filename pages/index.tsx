@@ -11,20 +11,21 @@ type Props = {
     currentOpening: OpeningType;
 };
 
-export default () => {
+export default function IndexContainer() {
     const opening = useCurrentOpening();
 
     return <UserLayout>
         {opening.data?.data.data && <Index currentOpening={opening.data.data.data}/>}
     </UserLayout>
 }
+
 const Index: NextPage<Props> = ({currentOpening}) => {
     return <>
         <PageTitle>Produtos</PageTitle>
 
         <ProductDeck>
             {currentOpening.products.map(product => (
-                <Link href={`products/${product.id}`}>
+                <Link key={product.id} href={`products/${product.id}`}>
                     <ProductCard
                         name={product.name}
                         price={product.quantity_cost}

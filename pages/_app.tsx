@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import './_bootstrap';
+import '../bootstrap/_bootstrap';
 import type {AppProps} from 'next/app'
 import {Provider} from "react-redux";
 import {store} from "../stores/store";

@@ -115,7 +115,8 @@ const Home: NextPage = () => {
             </SimpleModal>
 
             <div className="grid grid-cols-4 gap-4">
-                {[1, 2, 3, 4].map(() => <ProductCard
+                {[1, 2, 3, 4].map(i => <ProductCard
+                    key={i}
                     name="Abobrinha Paulista picado pequeno"
                     unit="pacote"
                     price={2.50}
@@ -124,6 +125,7 @@ const Home: NextPage = () => {
 
             <div className="grid grid-cols-4 gap-4">
                 {[1, 2, 3, 4].map(i => <ProductToggle
+                    key={i}
                     id={i + ''}
                     name="Abobrinha Paulista picado pequeno"
                 />)}
@@ -150,8 +152,8 @@ const Home: NextPage = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {[1, 2, 3, 4, 5].map(() => (
-                        <Tr>
+                    {[1, 2, 3, 4, 5].map(i => (
+                        <Tr key={i}>
                             <Td>
                                 <h5>Rafael Fulano</h5>
                                 <span className="block text-gray-700 text-sm mono">rafael.fulano@gmail.com</span>
@@ -243,6 +245,7 @@ const Home: NextPage = () => {
             </div>
             <div className="divide-y border border-gray-300 bg-white rounded">
                 {Object.keys(Array(10).fill(0)).map(i => <ListItem
+                    key={i}
                     title="Abobrinha"
                     description={(+i % 2) === 0 ? undefined : 'Abobrinha é uma fruta muito boa'}
                     rightIcon={(+i % 2) === 0 ? undefined : null}

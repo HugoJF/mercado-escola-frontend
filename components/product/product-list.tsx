@@ -16,6 +16,7 @@ export const ProductList: FC<Props> = ({products, compact = false, onClick, chil
     })}>
         {products.map(product => (
             <li
+                key={product.id}
                 className={clsx('flex gap-6 justify-between', {
                     'cursor-pointer': onClick,
                 })}

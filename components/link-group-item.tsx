@@ -3,7 +3,7 @@ import {forwardRef, MouseEventHandler, PropsWithChildren} from "react";
 type Props = {
     onClick?: MouseEventHandler<HTMLLIElement>;
 }
-export const LinkGroupItem = forwardRef<HTMLLIElement, PropsWithChildren<Props>>(
+const LinkGroupItem = forwardRef<HTMLLIElement, PropsWithChildren<Props>>(
     ({onClick, children}, ref) => <li
         ref={ref}
         onClick={onClick}
@@ -12,3 +12,7 @@ export const LinkGroupItem = forwardRef<HTMLLIElement, PropsWithChildren<Props>>
         {children}
     </li>
 );
+
+LinkGroupItem.displayName = 'LinkGroupItem';
+
+export {LinkGroupItem};

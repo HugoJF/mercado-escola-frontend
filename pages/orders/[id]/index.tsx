@@ -14,7 +14,7 @@ type Props = {
     order: OrderType<OrderWithOpening>;
 }
 
-export default () => {
+export default function OrderShowContainer() {
     const router = useRouter()
     const order = useOrder(router.query.id as string)
 

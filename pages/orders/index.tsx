@@ -7,20 +7,20 @@ import {useOrders} from "@queries/use-orders";
 import {Badge} from "@components/badge";
 import {PriceFormatter} from "@components/ui/price-formatter";
 import {DateFormatter} from "@components/ui/date-formatter";
-import {ProductListItem} from "@components/product/product-list-item";
 import {Button} from "@components/button";
 import {ProductList} from "@components/product/product-list";
 
 type Props = {
     orders: OrderType<OrderWithAddress & OrderWithOpening & OrderWithProducts>[];
 }
-export default () => {
+export default function OrderIndexContainer() {
     const orders = useOrders();
 
     return <UserLayout>
         {orders.data?.data.data && <OrderIndex orders={orders.data.data.data}/>}
     </UserLayout>
 }
+
 const OrderIndex: NextPage<Props> = ({orders}) => {
     return <>
         {/* todo add order filter  */}
@@ -28,7 +28,7 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
 
         {/* todo: unmock */}
         {orders.map(order => (
-            <Link href={`orders/${order.id}`}>
+            <Link key={order.id} href={`orders/${order.id}`}>
                 <div className="cursor-pointer">
                     <div className="flex p-6 space-x-6 bg-white border border-gray-300 rounded">
                         <div className="flex flex-col items-center space-y-2">
@@ -68,3 +68,5 @@ const OrderIndex: NextPage<Props> = ({orders}) => {
         ))}
     </>
 }
+
+OrderIndex.displayName = 'OrderIndex';

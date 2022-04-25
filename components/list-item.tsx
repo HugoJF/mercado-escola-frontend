@@ -9,7 +9,7 @@ type Props = {
     onClick?: () => void;
 }
 
-export const ListItem = forwardRef<HTMLDivElement, Props>(({
+const ListItem = forwardRef<HTMLDivElement, Props>(({
                                                                title,
                                                                description,
                                                                onClick,
@@ -32,3 +32,7 @@ export const ListItem = forwardRef<HTMLDivElement, Props>(({
         {RightIcon && <RightIcon className="my-3 mr-3 text-gray-700"/>}
     </div>;
 });
+
+ListItem.displayName = 'ListItem';
+
+export {ListItem};

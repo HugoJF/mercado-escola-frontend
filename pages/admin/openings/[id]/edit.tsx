@@ -13,7 +13,7 @@ type Props = {
     opening: OpeningType;
 }
 
-export default () => {
+export default function AdminProductsCreateContainer () {
     const router = useRouter();
     const opening = useOpening(router.query.id as string);
 
@@ -100,3 +100,5 @@ const AdminProductsCreate: FC<Props> = ({opening}) => {
             <Button loading={isSubmitting} color="primary">Atualizar</Button></form>
     </>
 }
+
+AdminProductsCreate.displayName = 'AdminProductsCreate';

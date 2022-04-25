@@ -23,7 +23,7 @@ type Props = {
     products: ProductType[];
 }
 
-export default () => {
+export default function AdminOpeningProductsContainer() {
     const router = useRouter();
     const opening = useOpening(router.query.id as string)
     const products = useProducts();
@@ -97,3 +97,5 @@ const AdminOpeningProducts: NextPage<Props> = ({opening, products}) => {
         </Table>
     </>
 }
+
+AdminOpeningProducts.displayName = 'AdminOpeningProducts';

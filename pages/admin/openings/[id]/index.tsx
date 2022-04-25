@@ -14,7 +14,7 @@ type Props = {
     opening: OpeningType;
 }
 
-export default () => {
+export default function AdminOpeningShowContainer() {
     const router = useRouter();
     const opening = useOpening(router.query.id as string)
 
@@ -69,3 +69,5 @@ const AdminOpeningShow: NextPage<Props> = ({opening}) => {
         <Button>Visualizar todos os pedidos</Button>
     </>
 }
+
+AdminOpeningShow.displayName = 'AdminOpeningShow'

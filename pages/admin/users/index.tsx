@@ -18,7 +18,7 @@ type Props = {
     onUserUpdate?: () => void;
 };
 
-export default () => {
+export default function UsersIndexContainer() {
     const users = useUsers();
 
     return <UserLayout>

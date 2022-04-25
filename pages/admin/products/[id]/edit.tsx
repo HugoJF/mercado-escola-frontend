@@ -20,7 +20,7 @@ type Props = {
     product: ProductType;
 }
 
-export default () => {
+export default function AdminProductsEditContainer() {
     const router = useRouter();
     const product = useProduct(router.query.id as string)
 

@@ -10,7 +10,7 @@ type Props = {
     onClick?: () => void;
 }
 
-export const ProductCard: FC<Props> = forwardRef<HTMLDivElement, Props>(
+const ProductCard: FC<Props> = forwardRef<HTMLDivElement, Props>(
     ({name, price, onClick, unit = 'unidade', mediaUrl}, ref) => (
         <div
             ref={ref}
@@ -39,3 +39,7 @@ export const ProductCard: FC<Props> = forwardRef<HTMLDivElement, Props>(
         </div>
     )
 )
+
+ProductCard.displayName = 'ProductCard';
+
+export {ProductCard};

@@ -16,7 +16,7 @@ type ComponentProps = {
 }
 type Props = NativeProps & ComponentProps;
 
-export const ProductListItem = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
+const ProductListItem = forwardRef<HTMLDivElement, PropsWithChildren<Props>>(
     ({product, className, ...rest}, ref) => {
         return <div
             ref={ref}
@@ -47,3 +47,7 @@ export const ProductListItem = forwardRef<HTMLDivElement, PropsWithChildren<Prop
         </div>
     }
 )
+
+ProductListItem.displayName = 'ProductListItem';
+
+export {ProductListItem};

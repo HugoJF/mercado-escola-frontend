@@ -7,7 +7,7 @@ type ExtraProps = {
 }
 type Props = NativeProps & ExtraProps;
 
-export const Textarea = forwardRef<HTMLTextAreaElement, Props>(
+const Textarea = forwardRef<HTMLTextAreaElement, Props>(
     ({id, name, placeholder, error, className, ...props}, ref) => {
         return <div className={className}>
             <div className="group relative">
@@ -44,3 +44,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, Props>(
         </div>;
     }
 );
+
+Textarea.displayName = 'Textarea';
+
+export {Textarea};

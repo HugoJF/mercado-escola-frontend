@@ -14,7 +14,7 @@ type Props = {
     products: ProductType[];
 }
 
-export default () => {
+export default function ProductsIndexContainer() {
     const products = useProducts();
 
     return <UserLayout>
@@ -46,7 +46,7 @@ const ProductsIndex: NextPage<Props> = ({products}) => {
         {/* TODO: empty state for list item group */}
         <ListItemGroup>
             {filteredProducts?.map(product => (
-                <Link href={`/admin/products/${product.id}/edit`}>
+                <Link key={product.id} href={`/admin/products/${product.id}/edit`}>
                     <ListItem
                         title={product.name}
                         /* TODO missing image count + price format */
