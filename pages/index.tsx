@@ -8,7 +8,7 @@ import {ProductDeck} from "@components/product-deck";
 import {OpeningType} from "@models/openings";
 
 type Props = {
-    currentOpening: OpeningType;
+    currentOpening: OpeningType | [];
 };
 
 export default function IndexContainer() {
@@ -20,11 +20,13 @@ export default function IndexContainer() {
 }
 
 const Index: NextPage<Props> = ({currentOpening}) => {
+    const _currentOpening: OpeningType | null = 'length' in currentOpening ? null : currentOpening;
+
     return <>
         <PageTitle>Produtos</PageTitle>
 
         <ProductDeck>
-            {currentOpening.products.map(product => (
+            {_currentOpening && _currentOpening.products.map(product => (
                 <Link key={product.id} href={`products/${product.id}`}>
                     <ProductCard
                         name={product.name}
